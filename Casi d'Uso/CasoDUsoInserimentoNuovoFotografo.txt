@@ -1,0 +1,17 @@
+Titolo: Inserimento nuovo fotografo- Attore primario: un Funzionario SILPH
+
+1 Il funzionario vuole inserire un nuovo  fotografo nel Sistema.
+2 Il funzionario inserisce email e password. Il sistema verifica la correttezza dei dati e autentica il funzionario.
+Il Sistema mostra nome e cognome del funzionario e l'elenco delle attività che può effettuare il funzionario.
+3 Il funzionario sceglie l'attività "Inserimento nuovo fotografo".
+4 Il funzionario inserisce nome, cognome,codice fiscale, data di nascita ed email del nuovo fotografo.
+Il Sistema registra le informazioni sul fotografo e gli associa un identificatore univoco.
+5 Il Sistema mostra un riepilogo delle informazioni sul fotografo inserito.
+6 Il funzionario conferma l'inserimento del fotografo. Il Sistema registra tutte le informazioni.
+Da questo momento in poi, tutti i visitatori del sito e i funzionari autenticati potranno vedere il nuovo fotografo registrato.
+
+Estensioni:
+2a Credenziali del Funzionario non convalidate. Il Sistema termina l'esecuzione del caso d'uso.
+3a Esiste un fotografo con quel codice fiscale. Il Sistema non registra informazioni e ripropone il passo tre.
+3-6a Il funzionario annulla l'operazione d'inserimento, il Sistema non registra nessuna informazione sul fotografo. 
+
