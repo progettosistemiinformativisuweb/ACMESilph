@@ -1,0 +1,15 @@
+Titolo: Visualizzazione delle richieste di utilizzo- Attore primario:  un Funzionario SILPH
+
+1 Il funzionario vuole visualizzare le richieste di utilizzo.
+
+2 Il funzionario inserisce email e password. Il sistema verifica la correttezza dei dati e autentica il funzionario.
+Il Sistema mostra nome e cognome del funzionario e l'elenco delle attività che può effettuare il funzionario.
+
+3 Il funzionario sceglie l'attività "Visualizza richieste di utilizzo".
+Il Sistema mostra l'elenco delle richieste di utilizzo.
+
+4 Il funzionario seleziona l'id di una richiesta.
+Il Sistema mostra i dettagli della richiesta selezionata.
+
+Estensioni:
+2a Credenziali del Funzionario non convalidate. Il Sistema termina l'esecuzione del caso d'uso.
