@@ -1,19 +1,26 @@
 Titolo: Inserimento nuovo album- Attore primario: un Funzionario SILPH
 
 1 Il funzionario vuole inserire un nuovo album di un fotografo.
+
 2 Il funzionario inserisce email e password. Il sistema verifica la correttezza dei dati e autentica il funzionario.
 Il Sistema mostra nome e cognome del funzionario e l'elenco delle attività che può effettuare il funzionario.
+
 3 Il funzionario sceglie l'attività "Inserisci nuovo album".
+
 4 Il funzionario inserisce nome, data di pubblicazione dell'album, inoltre inserisce l'identificativo univoco del fotografo selezionandolo da un elenco.
 Il Sistema registra le informazioni sull'album e associa all'album un identificatore univoco.
+
 Il funzionario ripete il passo 5 finchè non indica che ha terminato.
 5 Il funzionario inserisce il titolo e il prezzo unitario di una foto, inoltre il funzionario fa un upload della foto, il Sistema registra le informazioni
 e associa alla foto un identificatore univoco.
+
 6 Il Sistema mostra un riepilogo dell'album inserito.
+
 7 Il funzionario conferma l'inserimento dell'album. Il Sistema registra tutte le informazioni del album a cui associa un fotografo.
 Da questo momento in poi, tutti i visitatori del sito e i funzionari autenticati potranno vedere il nuovo album registrato.
 
 Estensioni:
 2a Credenziali del Funzionario non convalidate. Il Sistema termina l'esecuzione del caso d'uso.
+
 3-6a Il funzionario annulla l'operazione d'inserimento, il Sistema non registra nessuna informazione sull'album e le sue
 foto.

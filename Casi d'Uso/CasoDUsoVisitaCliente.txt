@@ -1,0 +1,24 @@
+Titolo: Visita della piattaforma da parte di un cliente- Attore primario: un potenziale cliente
+
+1 Il cliente vuole richiedere l'utilizzo di una o piu' fotografie.
+Il Sistema mostra l'elenco di fotografi.
+
+2 Il cliente seleziona l'id di un fotografo.
+Il Sistema mostra l'elenco di album realizzati dal fotografo.
+
+3 Il cliente inserisce il nome di un album del fotografo.
+Il Sistema mostra l'insieme di fotografie contenute nell'album.
+
+4 Il cliente seleziona l'id di una foto.
+Il Sistema mostra la foto.
+
+Il cliente ripete il passo 5 finche non indica che ha terminato.
+5 Il cliente seleziona l'id di una foto per inserirla nel carrello per la richiesta di utilizzo.
+.
+6 Il Sistema mostra un riepilogo della richiesta di utilizzo
+
+7 Il cliente inserisce nome, cognome e email e conferma la richiesta.
+Il Sistema registra la richiesta. Da questo momento in poi, i funzionari SILPH potranno vedere la richiesta di utilizzo da parte del cliente.
+
+Estensioni:
+5-7a Il cliente annulla l'operazione di inserimento nel carrello.
