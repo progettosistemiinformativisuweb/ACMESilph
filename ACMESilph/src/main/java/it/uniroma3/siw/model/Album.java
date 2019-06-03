@@ -18,19 +18,12 @@ public class Album {
 	@Column
 	private LocalDate annoPubblicazione;
 	
-	
-	
-	
-	
 	@ManyToOne
 	private Fotografo fotografo;
-	
-	
-	@OneToMany
-	private Map<Long, Foto> foto;
-	
-	
 
+	@OneToMany
+	private List<Foto> foto;
+	
 	public String getTitolo() {
 		return titolo;
 	}
@@ -53,6 +46,22 @@ public class Album {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Fotografo getFotografo() {
+		return fotografo;
+	}
+
+	public void setFotografo(Fotografo fotografo) {
+		this.fotografo = fotografo;
+	}
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
 	}
 	
 	

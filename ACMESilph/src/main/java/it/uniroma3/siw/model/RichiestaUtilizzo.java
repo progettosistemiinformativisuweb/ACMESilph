@@ -1,28 +1,33 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 public class RichiestaUtilizzo {
 	
-	@Column
-	private Long totale;
 	
 	@Column
 	private LocalDate data;
 	
 	@OneToOne
 	private Cliente cliente;
+	
+	@OneToMany
+	private List<Foto> foto; 
 
+	
+	
 	public Long getTotale() {
-		return totale;
+		long somma = 0; 
+		for(Foto f: this.foto) {
+			somma += f.getPrezzo(); 
+		}
+		return somma; 
 	}
 
-	public void setTotale(Long totale) {
-		this.totale = totale;
-	}
 
 	public LocalDate getData() {
 		return data;
@@ -38,6 +43,14 @@ public class RichiestaUtilizzo {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
 	}
 	
 	

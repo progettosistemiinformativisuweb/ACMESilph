@@ -1,9 +1,10 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
-import java.util.Map;
-
+import java.util.List;
 import javax.persistence.*;
+
+import it.uniroma3.siw.service.AlbumServices;
 
 @Entity
 public class Fotografo {
@@ -25,7 +26,12 @@ public class Fotografo {
 	private LocalDate dataNascita;
 	
 	@OneToMany(mappedBy="fotografo")
-	private Map<Long, Album> album;
+	private List<Foto> album;
+	
+	private AlbumServices albumServices; 
+	
+	
+	
 
 	public Long getId() {
 		return id;
@@ -67,14 +73,9 @@ public class Fotografo {
 		this.dataNascita = dataNascita;
 	}
 
-	public Map<Long, Album> getAlbum() {
-		return album;
+	public Album getAlbum(long id) {
+		return this.albumServices.getAlbumByIdWithFoto(id); 
 	}
-
-	public void setAlbum(Map<Long, Album> album) {
-		this.album = album;
-	}
-	
 	
 	
 
