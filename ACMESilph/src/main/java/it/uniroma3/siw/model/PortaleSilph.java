@@ -1,5 +1,8 @@
 package it.uniroma3.siw.model;
 
-public class PortaleSilph {
+import javax.persistence.*;
+
+@Entity
+public class PortaleSilph { 
 
 }
