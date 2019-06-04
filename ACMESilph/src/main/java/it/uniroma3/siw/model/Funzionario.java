@@ -16,6 +16,22 @@ public class Funzionario {
 	
 	@Column
 	private String cognome;
+	
+	
+
+	public boolean checkPassword(String pwd) {
+		if(!this.password.equals(pwd)) {
+			throw new InvalidPasswordRuntimeException("Password errata");
+		}
+		return true;
+		
+	}
+	
+	
+	
+	
+	
+	
 
 	public String getEmail() {
 		return email;
@@ -48,6 +64,7 @@ public class Funzionario {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+
 	
 	
 	

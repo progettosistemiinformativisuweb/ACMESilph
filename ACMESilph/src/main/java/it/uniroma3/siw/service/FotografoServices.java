@@ -34,8 +34,8 @@ public class FotografoServices {
 		return this.getAllFotografi().stream().collect(Collectors.toList());
 	}
 	
-	public Fotografo getFotografoByIdWithAlbumAndFoto(Long id) {
-		return this.fotografoRepository.findByIdWithAlbumAndFoto(id);
+	public Fotografo getFotografoByIdWithAlbum(Long id) {
+		return this.fotografoRepository.findByIdWithAlbum(id);
 	}
 
 }

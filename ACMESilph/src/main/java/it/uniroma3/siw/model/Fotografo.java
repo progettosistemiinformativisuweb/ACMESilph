@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -26,12 +27,52 @@ public class Fotografo {
 	private LocalDate dataNascita;
 	
 	@OneToMany(mappedBy="fotografo")
-	private List<Foto> album;
+	private List<Album> album;
 	
 	private AlbumServices albumServices; 
 	
 	
 	
+
+	public Fotografo(String nome, String cognome, LocalDate dataNascita, String email) {
+		this.nome=nome;
+		this.cognome=cognome;
+		this.dataNascita=dataNascita;
+		this.email=email;
+		this.album=new ArrayList<Album>();
+		this.albumServices=new AlbumServices();
+	}
+	
+	
+	
+
+	public List<Album> getAlbum() {
+		return album;
+	}
+
+
+
+
+	public void setAlbum(List<Album> album) {
+		this.album = album;
+	}
+
+
+
+
+	public AlbumServices getAlbumServices() {
+		return albumServices;
+	}
+
+
+
+
+	public void setAlbumServices(AlbumServices albumServices) {
+		this.albumServices = albumServices;
+	}
+
+
+
 
 	public Long getId() {
 		return id;

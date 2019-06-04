@@ -38,7 +38,7 @@ public class SilphSPA {
 	}
 	
 	public Fotografo getFotografo(Long id) {
-		return this.fotografoServices.getFotografoByIdWithAlbumAndFoto(id);
+		return this.fotografoServices.getFotografoByIdWithAlbum(id);
 	}
 
 	public Funzionario getFunzionario(String email) {
@@ -47,6 +47,11 @@ public class SilphSPA {
 	
 	public RichiestaUtilizzo getRichiestaUtilizzo(Long id) {
 		return this.richiestaUtilizzoServices.getRichiestaByIdWithClienteAndFoto(id); 
+	}
+
+	public void aggiungiFotografo(Fotografo fotografoCorrente) {
+		this.fotografoServices.add(fotografoCorrente);
+		
 	}
 	
 

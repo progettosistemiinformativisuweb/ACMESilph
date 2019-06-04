@@ -18,8 +18,7 @@ public interface FotografoRepository extends CrudRepository<Fotografo, Long> {
 	@Query("SELECT f " +
             "FROM Fotografo f "
             + "JOIN FETCH f.album a "
-            + "JOIN FETCH a.foto fo "
             + "WHERE a.id = :id ")
-	public Fotografo findByIdWithAlbumAndFoto(@Param("id") Long id);
+	public Fotografo findByIdWithAlbum(@Param("id") Long id);
 
 }
