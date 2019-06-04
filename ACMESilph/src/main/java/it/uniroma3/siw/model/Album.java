@@ -5,6 +5,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import it.uniroma3.siw.service.FotoServices;
+
 @Entity
 public class Album {
 	
@@ -18,12 +20,35 @@ public class Album {
 	@Column
 	private LocalDate annoPubblicazione;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Fotografo fotografo;
 
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Foto> foto;
 	
+	private FotoServices fotoServices; 
+	
+	
+	public Album(String titolo, LocalDate annoPubblicazione, Fotografo fotografo) {
+		super();
+		this.titolo = titolo;
+		this.annoPubblicazione = annoPubblicazione;
+		this.fotografo = fotografo;
+		this.foto = new ArrayList<>();
+		this.fotoServices = new FotoServices();
+	}
+	
+	public Album() {
+		this.foto = new ArrayList<>();
+		this.fotoServices = new FotoServices();
+	}
+	
+	public void aggiungiFoto(String titolo, Long prezzo) {
+		this.foto.add(new Foto(titolo,prezzo, this.fotografo));
+	}
+	
+	
+
 	public String getTitolo() {
 		return titolo;
 	}
@@ -59,9 +84,17 @@ public class Album {
 	public List<Foto> getFoto() {
 		return foto;
 	}
+	
+	public Foto getFoto(Long id) {
+		return this.fotoServices.getFotoById(id); 
+	}
 
 	public void setFoto(List<Foto> foto) {
 		this.foto = foto;
+	}
+
+	public void confermati() {
+		this.fotografo.aggiungiAlbum(this);
 	}
 	
 	

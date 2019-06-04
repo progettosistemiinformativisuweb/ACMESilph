@@ -14,10 +14,17 @@ public class PortaleSilph {
 	
 	private Funzionario funzionarioCorrente;
 	
-	
+	public PortaleSilph(SilphSPA silphSPA) {
+		super();
+		this.silphSPA = silphSPA;
+	}
+
 	
 	public void loginFunzionario(String email, String pwd) {
-		Funzionario f=this.silphSPA.getFunzionario(email);
+		Funzionario f = this.silphSPA.getFunzionario(email);
+		if(f == null) {
+			throw new InvalidEmailRuntimeException("Email non trovata");
+		}
 		f.checkPassword(pwd);
 		this.funzionarioCorrente=f;
 		
@@ -51,7 +58,7 @@ public class PortaleSilph {
 	}
 	
 	/**
-	 * Caso d'uso: Selezion Richiesta di Utilizzo
+	 * Caso d'uso: Seleziona Richiesta di Utilizzo
 	 * @param id
 	 */
 	
@@ -60,33 +67,93 @@ public class PortaleSilph {
 	}
 	
 	
+	/**
+	 * Caso d'uso: Inserimento Nuovo Album
+	 */
+	
+	public void iniziaInserimentoAlbum() {
+		
+	}
+	/**
+	 * Caso d'uso: Inserimento Nuovo Album
+	 */
+	
+	public void inserisciDatiAlbum(String titolo, LocalDate dataPubblicazione, Long idFotografo) {
+		Fotografo fotografo = this.silphSPA.getFotografo(idFotografo); 
+		this.albumCorrente = new Album(titolo, dataPubblicazione, fotografo);
+	}
+	/**
+	 * Caso d'uso: Inserimento Nuovo Album
+	 */
+	
+	public void inserisciFotoNellAlbum(String titolo, Long prezzo) {
+		this.albumCorrente.aggiungiFoto(titolo, prezzo);
+	}
+	/**
+	 * Caso d'uso: Inserimento Nuovo Album
+	 */
+	
+	public void terminaInserimentoFotoNellAlbum() {
+		//RIEPILOGO Album
+	}
+	/**
+	 * Caso d'uso: Inserimento Nuovo Album
+	 */
+	
+	public void confermaAlbum() {
+		this.albumCorrente.confermati();
+	}
 	
 	
-
-	public PortaleSilph(SilphSPA silphSPA) {
-		super();
-		this.silphSPA = silphSPA;
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void initVisita() {
+		this.richiestaUtilizzoCorrente = new RichiestaUtilizzo();
+	}
+	
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void selezionaFotografo(Long id) {
+		this.fotografoCorrente = this.silphSPA.getFotografo(id); 
+	}
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void selezionaAlbum(Long id) {
+		this.albumCorrente = this.fotografoCorrente.getAlbum(id); 
+	}
+	
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void selezionaFoto(Long id) {
+		this.richiestaUtilizzoCorrente.aggiungiFoto(this.albumCorrente.getFoto(id));
 	}
 
-	public SilphSPA getSilphSPA() {
-		return silphSPA;
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void terminaInserimentoFoto() {
+		
 	}
-
-	public RichiestaUtilizzo getRichiestaUtilizzoCorrente() {
-		return richiestaUtilizzoCorrente;
+	
+	
+	/**
+	 * Caso d'uso:  Visita Cliente
+	 */
+	public void confermaRichiestaUtilizzo(String nome, String cognome, String email) {
+		this.richiestaUtilizzoCorrente.setDati(nome, cognome, email);
+		this.silphSPA.aggiungiRichiestaUtilizzo(this.richiestaUtilizzoCorrente);
 	}
-
-	public Fotografo getFotografoCorrente() {
-		return fotografoCorrente;
-	}
+	
 	
 	public Funzionario getFunzionarioCorrente() {
 		return funzionarioCorrente;
 	}
 
-	public Album getAlbumCorrente() {
-		return albumCorrente;
-	}
+	
 
 
 	

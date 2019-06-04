@@ -1,7 +1,5 @@
 package it.uniroma3.siw.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
 
 @Entity
@@ -15,13 +13,19 @@ public class Foto {
 	private String titolo;
 	
 	@Column
-	private LocalDate data;
-	
-	@Column
 	private Long prezzo;
 	
 	@ManyToOne
 	private Fotografo fotografo;
+	
+	
+
+	public Foto(String titolo, Long prezzo, Fotografo fotografo) {
+		super();
+		this.titolo = titolo;
+		this.prezzo = prezzo;
+		this.fotografo = fotografo;
+	}
 
 	public Long getId() {
 		return id;
@@ -39,13 +43,7 @@ public class Foto {
 		this.titolo = titolo;
 	}
 
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
+	
 
 	public Long getPrezzo() {
 		return prezzo;

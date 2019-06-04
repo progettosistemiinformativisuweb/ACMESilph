@@ -26,8 +26,9 @@ public class Fotografo {
 	@Column
 	private LocalDate dataNascita;
 	
-	@OneToMany(mappedBy="fotografo")
+	@OneToMany(mappedBy="fotografo", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Album> album;
+	
 	
 	private AlbumServices albumServices; 
 	
@@ -116,6 +117,10 @@ public class Fotografo {
 
 	public Album getAlbum(long id) {
 		return this.albumServices.getAlbumByIdWithFoto(id); 
+	}
+
+	public void aggiungiAlbum(Album album) {
+		this.albumServices.add(album);	
 	}
 	
 	
