@@ -21,7 +21,7 @@ public class RichiestaUtilizzoServices {
 	}
 
 	public RichiestaUtilizzo getRichiestaByIdWithClienteAndFoto(Long id) {
-		return this.richiestaUtilizzoRepository.findByIdWithClienteAndFoto(id);
+		return this.richiestaUtilizzoRepository.findByIdWithFoto(id);
 	}
 
 	public Collection<RichiestaUtilizzo> getAllRichieste() {
