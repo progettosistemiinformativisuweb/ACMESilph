@@ -30,9 +30,6 @@ public class Fotografo {
 	private List<Album> album;
 	
 	
-	private AlbumServices albumServices; 
-	
-	
 	
 
 	public Fotografo(String nome, String cognome, LocalDate dataNascita, String email) {
@@ -41,7 +38,6 @@ public class Fotografo {
 		this.dataNascita=dataNascita;
 		this.email=email;
 		this.album=new ArrayList<Album>();
-		this.albumServices=new AlbumServices();
 	}
 	
 	
@@ -57,21 +53,6 @@ public class Fotografo {
 	public void setAlbum(List<Album> album) {
 		this.album = album;
 	}
-
-
-
-
-	public AlbumServices getAlbumServices() {
-		return albumServices;
-	}
-
-
-
-
-	public void setAlbumServices(AlbumServices albumServices) {
-		this.albumServices = albumServices;
-	}
-
 
 
 
@@ -113,14 +94,6 @@ public class Fotografo {
 
 	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
-	}
-
-	public Album getAlbum(long id) {
-		return this.albumServices.getAlbumByIdWithFoto(id); 
-	}
-
-	public void aggiungiAlbum(Album album) {
-		this.albumServices.add(album);	
 	}
 	
 	

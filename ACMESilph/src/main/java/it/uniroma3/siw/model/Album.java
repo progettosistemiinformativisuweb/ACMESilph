@@ -26,8 +26,6 @@ public class Album {
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Foto> foto;
 	
-	private FotoServices fotoServices; 
-	
 	
 	public Album(String titolo, LocalDate annoPubblicazione, Fotografo fotografo) {
 		super();
@@ -35,12 +33,10 @@ public class Album {
 		this.annoPubblicazione = annoPubblicazione;
 		this.fotografo = fotografo;
 		this.foto = new ArrayList<>();
-		this.fotoServices = new FotoServices();
 	}
 	
 	public Album() {
 		this.foto = new ArrayList<>();
-		this.fotoServices = new FotoServices();
 	}
 	
 	public void aggiungiFoto(String titolo, Long prezzo) {
@@ -84,18 +80,12 @@ public class Album {
 	public List<Foto> getFoto() {
 		return foto;
 	}
-	
-	public Foto getFoto(Long id) {
-		return this.fotoServices.getFotoById(id); 
-	}
+
 
 	public void setFoto(List<Foto> foto) {
 		this.foto = foto;
 	}
 
-	public void confermati() {
-		this.fotografo.aggiungiAlbum(this);
-	}
 	
 	
 	
