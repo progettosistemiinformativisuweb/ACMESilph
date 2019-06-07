@@ -42,5 +42,9 @@ public class AlbumServices {
 	public List<Album> getAlbumsByFotografoId(Long id){
 		return this.albumRepository.findByFotografoId(id);
 	}
+	
+	public Album getAlbumById(Long id) {
+		return this.albumRepository.findById(id).orElse(null);
+	}
 
 }

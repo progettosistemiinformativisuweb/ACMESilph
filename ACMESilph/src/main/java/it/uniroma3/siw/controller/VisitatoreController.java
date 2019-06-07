@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.model.Funzionario;
 import it.uniroma3.siw.service.AlbumServices;
 import it.uniroma3.siw.service.FotoServices;
 import it.uniroma3.siw.service.FotografoServices;
 import it.uniroma3.siw.service.FunzionarioServices;
 import it.uniroma3.siw.service.RichiestaUtilizzoServices;
+import net.bytebuddy.asm.Advice.This;
 
 
 @Controller
@@ -48,7 +50,7 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
 	public String getGalleriaFoto(Model model) {
-		model.addAttribute("photos", this.fotografoServices.getAllFotografiAsList());
+		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
 		return "galleria.html";
 	}
 	
@@ -64,6 +66,16 @@ public class VisitatoreController {
 		model.addAttribute("albums", this.albumServices.getAlbumsByFotografoId(id));
 		return "fotografo.html";
 	}
+	
+	
+	@RequestMapping(value="/album/{id}", method=RequestMethod.GET)
+    public String getAlbum(@PathVariable ("id") Long id, Model model) {
+		Album album = this.albumServices.getAlbumById(id); 
+    	model.addAttribute("album",album ); 
+    	model.addAttribute("photos",album.getFoto()); 
+    	return "album.html"; 
+    }
+	
 	
 
 	

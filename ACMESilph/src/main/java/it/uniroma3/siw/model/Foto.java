@@ -19,6 +19,11 @@ public class Foto {
 	private Fotografo fotografo;
 	
 	
+	 @Lob
+	 @Column(nullable=false)
+     private byte[] sorgenteImmagine;
+	
+	
 
 	public Foto(String titolo, Long prezzo, Fotografo fotografo) {
 		super();
@@ -61,6 +66,16 @@ public class Foto {
 		this.fotografo = fotografo;
 	}
 
+	public byte[] getSorgenteImmagine() {
+		return sorgenteImmagine;
+	}
+
+	public void setSorgenteImmagine(byte[] sorgenteImmagine) {
+		this.sorgenteImmagine = sorgenteImmagine;
+	}
+	
+
+	
 	
 
 }

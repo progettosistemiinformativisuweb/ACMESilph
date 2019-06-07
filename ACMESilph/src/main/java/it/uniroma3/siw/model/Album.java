@@ -23,7 +23,7 @@ public class Album {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Fotografo fotografo;
 
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private List<Foto> foto;
 	
 	
