@@ -11,6 +11,8 @@ public interface FunzionarioRepository extends CrudRepository<Funzionario, Long>
     public Collection<Funzionario> findAll();
     
     public Funzionario findByEmail(String email);
+    
+    public Funzionario findByEmailAndPassword(String email, String password);
 
 	
 

@@ -30,13 +30,14 @@ public class FotoServices {
 		return this.fotoRepository.findAll();
 	}
 	
-	public List<Foto> getAllFotografiAsList() {
+	public List<Foto> getAllFotoAsList() {
 		return this.getAllFoto().stream().collect(Collectors.toList());
 	}
 	
-	public Collection<Foto> getFotoByAlbumId(Long id) {
+	public Collection<Foto> getFotoByFotografoId(Long id) {
 		return this.fotoRepository.findFotoByFotografoId(id);
 	}
 	
+
 
 }

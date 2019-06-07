@@ -34,6 +34,4 @@ public class FunzionarioServices {
 		return this.getAllFunzionari().stream().collect(Collectors.toList());
 	}
 	
-	
-
 }

@@ -1,11 +1,11 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
-import it.uniroma3.siw.service.AlbumServices;
 
 @Entity
 public class Fotografo {
