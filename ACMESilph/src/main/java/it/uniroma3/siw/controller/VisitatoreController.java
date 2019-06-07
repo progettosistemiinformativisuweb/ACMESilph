@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,7 +19,7 @@ import it.uniroma3.siw.service.RichiestaUtilizzoServices;
 
 
 @Controller
-public class visitatoreController {
+public class VisitatoreController {
 	@Autowired
 	private AlbumServices albumServices;
 	
@@ -34,6 +35,17 @@ public class visitatoreController {
 	@Autowired
 	private RichiestaUtilizzoServices richiestaUtilizzoServices;
 	
+	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
+	public String login(@ModelAttribute ("possibileFunzionario") Funzionario possibileFunzionario, Model model) {
+		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
+		if(funzionario!=null && funzionario.checkPassword(possibileFunzionario.getPassword())) {
+				model.addAttribute("funzionarioCorrente", funzionario);
+				return "homeFunzionario.html";
+		}
+		else
+			return "loginForm.html";
+	}
+	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
 	public String getGalleriaFoto(Model model) {
 		model.addAttribute("photos", this.fotografoServices.getAllFotografiAsList());
@@ -46,16 +58,14 @@ public class visitatoreController {
 		return "fotografi.html";
 	}
 	
-	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
-	public String login(@Valid @ModelAttribute ("possibileFunzionario") Funzionario possibileFunzionario, Model model) {
-		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
-		if(funzionario!=null && funzionario.checkPassword(possibileFunzionario.getPassword())) {
-				model.addAttribute("funzionarioCorrente", funzionario);
-				return "homeFunzionario.html";
-		}
-		else
-			return "loginForm.html";
+	@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
+	public String getFotografo(@PathVariable ("id") Long id, Model model) {
+		model.addAttribute("fotografo", this.fotografoServices.getFotografoById(id));
+		model.addAttribute("albums", this.albumServices.getAlbumsByFotografoId(id));
+		return "fotografo.html";
 	}
+	
+
 	
 	
 }

@@ -39,5 +39,8 @@ public class AlbumServices {
 		return this.getAllAlbum().stream().collect(Collectors.toList());
 	}
 	
+	public List<Album> getAlbumsByFotografoId(Long id){
+		return this.albumRepository.findByFotografoId(id);
+	}
 
 }

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.repository;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -22,5 +23,10 @@ public interface AlbumRepository extends CrudRepository<Album, Long> {
             "WHERE a.id = :id " 
             )
 	public Album findByIdWithFoto(@Param("id") Long id);
+	
+	@Query("SELECT a"+
+			"FROM Album a"+
+			"WHERE a.fotografo.id= :id")
+	public List<Album> findByFotografoId(@Param("id") Long id);
 
 }
