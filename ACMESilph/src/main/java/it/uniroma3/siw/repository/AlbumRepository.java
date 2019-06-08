@@ -17,6 +17,7 @@ public interface AlbumRepository extends CrudRepository<Album, Long> {
 	public Collection<Album> findAll();
 	
 	
+	
 	/*Cerca l'album con quell'id insieme alle foto*/
 	@Query("SELECT a " +
             "FROM Album a JOIN FETCH a.foto " +
