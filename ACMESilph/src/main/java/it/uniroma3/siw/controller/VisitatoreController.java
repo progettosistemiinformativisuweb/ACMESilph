@@ -1,10 +1,10 @@
 package it.uniroma3.siw.controller;
 
 import java.io.ByteArrayInputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
