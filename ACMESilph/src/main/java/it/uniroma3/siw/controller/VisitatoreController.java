@@ -1,5 +1,13 @@
 package it.uniroma3.siw.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Album;
+import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Funzionario;
 import it.uniroma3.siw.service.AlbumServices;
 import it.uniroma3.siw.service.FotoServices;
@@ -49,6 +58,14 @@ public class VisitatoreController {
 	public String getGalleriaFoto(Model model) {
 		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
 		return "galleria.html";
+	}
+	
+	@RequestMapping(value="/getFoto/{id}", method=RequestMethod.GET)
+	public void getFoto(@PathVariable ("id") Long id, Model model, HttpServletResponse response) throws IOException {
+		response.setContentType("image/jpeg");
+		Foto foto  = this.fotoServices.getFotoById(id);
+		InputStream inputStream= new ByteArrayInputStream(foto.getSorgenteImmagine());
+		IOUtils.copy(inputStream, response.getOutputStream());
 	}
 	
 	@RequestMapping(value="/fotografi", method=RequestMethod.GET)
