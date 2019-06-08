@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Fotografi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<table border="1" style="width: 300px">
+		<tr>
+			<td>Nome</td>
+			<td>Cognome</td>
+			<td>Email</td>
+		</tr>
+		<th:block th:each="fotografo : ${fotografi}">
+			<tr>
+				<td th:text="${fotografo.nome}">nome</td>
+				<td th:text="${fotografo.cognome}">cognome</td>
+				<td th:text="${fotografo.email}">email</td>
+			</tr>
+		</th:block>
+	</table>
+</body>
+</html>
