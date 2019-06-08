@@ -48,7 +48,7 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
 	public String getGalleriaFoto(Model model) {
-		model.addAttribute("photos", this.fotografoServices.getAllFotografiAsList());
+		model.addAttribute("photos", this.fotoServices.getAllFoto());
 		return "galleria.html";
 	}
 	
