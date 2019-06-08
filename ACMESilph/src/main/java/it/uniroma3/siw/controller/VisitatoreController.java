@@ -2,6 +2,7 @@ package it.uniroma3.siw.controller;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,6 @@ import it.uniroma3.siw.service.FotoServices;
 import it.uniroma3.siw.service.FotografoServices;
 import it.uniroma3.siw.service.FunzionarioServices;
 import it.uniroma3.siw.service.RichiestaUtilizzoServices;
-import net.bytebuddy.asm.Advice.This;
 
 
 @Controller
@@ -50,11 +50,7 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
 	public String getGalleriaFoto(Model model) {
-<<<<<<< HEAD
-		model.addAttribute("photos", this.fotoServices.getAllFoto());
-=======
 		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
->>>>>>> 329def0dab36827c2f51e283eb1ce32bbf99f42c
 		return "galleria.html";
 	}
 	
