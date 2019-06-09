@@ -23,7 +23,7 @@ public class FunzionarioServices {
 	}
 
 	public Funzionario getFunzionarioByEmail(String email) {
-		return this.funzionarioRepository.findByEmail(email);
+		return this.funzionarioRepository.findById(email).orElse(null);
 	}
 
 	public Collection<Funzionario> getAllFunzionari() {
