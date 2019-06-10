@@ -43,6 +43,12 @@ public class VisitatoreController {
 	@Autowired
 	private RichiestaUtilizzoServices richiestaUtilizzoServices;
 	
+	
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String getIndex() {
+		return "index.html"; 
+	}
+	
 	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
 	public String login(@ModelAttribute ("possibileFunzionario") Funzionario possibileFunzionario, Model model) {
 		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
@@ -51,7 +57,7 @@ public class VisitatoreController {
 				return "homeFunzionario.html";
 		}
 		else
-			return "loginForm.html";
+			return "login.html";
 	}
 	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
