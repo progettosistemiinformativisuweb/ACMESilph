@@ -1,7 +1,5 @@
 package it.uniroma3.siw.model;
 
-import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -23,8 +21,7 @@ public class Fotografo {
 	@Column
 	private String email;
 	
-	@Column
-	private LocalDate dataNascita;
+	
 	
 	@OneToMany(mappedBy="fotografo", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Album> album;
@@ -32,10 +29,9 @@ public class Fotografo {
 	
 	
 
-	public Fotografo(String nome, String cognome, LocalDate dataNascita, String email) {
+	public Fotografo(String nome, String cognome, String email) {
 		this.nome=nome;
 		this.cognome=cognome;
-		this.dataNascita=dataNascita;
 		this.email=email;
 		this.album=new ArrayList<Album>();
 	}
@@ -88,14 +84,6 @@ public class Fotografo {
 		this.email = email;
 	}
 
-	public LocalDate getDataNascita() {
-		return dataNascita;
-	}
-
-	public void setDataNascita(LocalDate dataNascita) {
-		this.dataNascita = dataNascita;
-	}
-	
 	
 
 }

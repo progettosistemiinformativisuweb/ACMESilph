@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="ISO-8859-1">
+<title>Nuovo Fotografo</title>
+</head>
+<body>
+	<div>
+		<form th:action="@{/addFotografo}" th:method="POST"
+			th:object="${fotografo}">
+
+			<table>
+				<tr>
+					<td>Nome:</td>
+					<td><input type="text" th:field="*{nome}"></td>
+					<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+
+
+
+				</tr>
+
+
+
+				<tr>
+					<td>Cognome:</td>
+					<td><input type="text" th:field="*{cognome}"></td>
+					<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
+
+
+
+				</tr>
+
+
+				<tr>
+					<td>Nome:</td>
+					<td><input type="text" th:field="*{email}"></td>
+					<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+
+
+
+				</tr>
+
+
+
+
+			</table>
+
+
+
+
+
+
+		</form>
+
+
+	</div>
+
+</body>
+</html>
