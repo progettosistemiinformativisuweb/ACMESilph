@@ -34,9 +34,6 @@ public class FotoServices {
 		return this.getAllFoto().stream().collect(Collectors.toList());
 	}
 	
-	public Collection<Foto> getFotoByFotografoId(Long id) {
-		return this.fotoRepository.findFotoByFotografoId(id);
-	}
 	
 
 

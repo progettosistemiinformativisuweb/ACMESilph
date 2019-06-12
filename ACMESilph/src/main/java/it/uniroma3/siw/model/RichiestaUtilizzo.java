@@ -23,6 +23,7 @@ public class RichiestaUtilizzo {
 
 	private String email; 
 
+	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Foto> foto; 
 	

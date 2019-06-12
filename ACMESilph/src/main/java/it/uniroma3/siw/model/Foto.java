@@ -31,6 +31,15 @@ public class Foto {
 		this.prezzo = prezzo;
 		this.fotografo = fotografo;
 	}
+	
+	
+
+	public Foto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public Long getId() {
 		return id;

@@ -97,6 +97,18 @@ public class VisitatoreController {
     }
 	
 	
+	
+	
+	@RequestMapping(value="/getLogin", method=RequestMethod.GET)
+	public String getLogin() {
+		return "login";
+	}
+	
+	
+	@RequestMapping(value="/getGalleria", method=RequestMethod.GET)
+	public String getGalleriaFoto() {
+		return "galleria.html";
+	}
 
 	
 	

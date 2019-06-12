@@ -38,6 +38,18 @@ public class Fotografo {
 	
 	
 	
+	
+	
+
+	public Fotografo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+
 
 	public List<Album> getAlbum() {
 		return album;

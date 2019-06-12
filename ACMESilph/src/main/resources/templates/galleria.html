@@ -10,7 +10,7 @@
 <title>Galleria - SILPH WEB</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="static/css/assets2/main.css" />
+<link rel="stylesheet" th:href="@{/css/assets2/css/main.css}" />
 </head>
 <body>
 	<div class="page-wrap">
@@ -18,8 +18,8 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
-				<li><a href="index.html"><span class="icon fa-home"></span></a></li>
-				<li><a href="galleria.html" class="active"><span
+				<li><a th:href="@{/}"><span class="icon fa-home"></span></a></li>
+				<li><a th:href="@{/getGalleria}" class="active"><span
 						class="icon fa-camera-retro"></span></a></li>
 			</ul>
 		</nav>
@@ -89,20 +89,20 @@
 			<!-- Footer -->
 			<footer id="footer">
 				<div class="copyright">
-					&copy; Realizzato con <a href="https://templated.co/">TEMPLATED</a>.
-					immagini: <a href="https://unsplash.com/">Unsplash</a>.
+					&copy; Realizzato con <a th:href="@{https://templated.co/}">TEMPLATED</a>.
+					immagini: <a th:href="@{https://unsplash.com/}">Unsplash</a>.
 				</div>
 			</footer>
 		</section>
 	</div>
 
 	<!-- Scripts -->
-	<script src="static/css/assets/js/jquery.min.js"></script>
-	<script src="static/css/assets/js/jquery.poptrox.min.js"></script>
-	<script src="static/css/assets/js/jquery.scrolly.min.js"></script>
-	<script src="static/css/assets/js/skel.min.js"></script>
-	<script src="static/css/assets/js/util.js"></script>
-	<script src="static/css/assets/js/main.js"></script>
+	<script src="/css/assets2/css/js/jquery.min.js"></script>
+	<script src="/css/assets2/css/js/jquery.poptrox.min.js"></script>
+	<script src="/css/assets2/css/js/jquery.scrolly.min.js"></script>
+	<script src="/css/assets2/css/js/skel.min.js"></script>
+	<script src="/css/assets2/css/js/util.js"></script>
+	<script src="/css/assets2/css/js/main.js"></script>
 
 </body>
 </html>

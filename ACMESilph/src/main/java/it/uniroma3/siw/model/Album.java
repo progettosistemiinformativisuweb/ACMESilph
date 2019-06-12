@@ -23,8 +23,11 @@ public class Album {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Fotografo fotografo;
 
+	@JoinColumn(name = "album")
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private List<Foto> foto;
+	
+	
 	
 	
 	public Album(String titolo, LocalDate annoPubblicazione, Fotografo fotografo) {
@@ -36,7 +39,6 @@ public class Album {
 	}
 	
 	public Album() {
-		this.foto = new ArrayList<>();
 	}
 	
 	public void aggiungiFoto(String titolo, Long prezzo) {

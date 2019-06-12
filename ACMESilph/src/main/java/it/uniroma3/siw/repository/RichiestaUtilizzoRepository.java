@@ -18,8 +18,8 @@ public interface RichiestaUtilizzoRepository extends CrudRepository<RichiestaUti
 	/*Cerca la richiesta con caricandosi anche il cliente e le foto*/
 	@Query("SELECT r " +
             "FROM RichiestaUtilizzo r" 
-           +" JOIN FETCH r.foto "
-           + "WHERE a.id = :id " 
+           +" JOIN FETCH r.foto f "
+           + "WHERE f.id = :id " 
             )
 	public RichiestaUtilizzo findByIdWithFoto(@Param("id") Long id);
 }

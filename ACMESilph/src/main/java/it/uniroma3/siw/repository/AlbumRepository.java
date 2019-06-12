@@ -27,8 +27,8 @@ public interface AlbumRepository extends CrudRepository<Album, Long> {
             )
 	public Album findByIdWithFoto(@Param("id") Long id);
 	
-	@Query("SELECT a"+
-			"FROM Album a"+
+	@Query("SELECT a "+
+			"FROM Album a "+
 			"WHERE a.fotografo.id= :id")
 	public List<Album> findByFotografoId(@Param("id") Long id);
 
