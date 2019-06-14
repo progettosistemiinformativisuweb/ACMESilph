@@ -41,6 +41,13 @@ public class Foto {
 
 
 
+	public Foto(String titolo, Long prezzo) {
+		this.titolo = titolo; 
+		this.prezzo = prezzo; 
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

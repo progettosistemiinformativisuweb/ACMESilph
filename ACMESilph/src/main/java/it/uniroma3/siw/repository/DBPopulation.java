@@ -1,10 +1,15 @@
 package it.uniroma3.siw.repository;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import it.uniroma3.siw.model.Foto;
+import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.Funzionario;
 
 
@@ -14,17 +19,27 @@ public class DBPopulation implements ApplicationRunner{
 	@Autowired
 	private FunzionarioRepository funzionarioRepository; 
 	
+	@Autowired
+	private FotografoRepository fotografoRepository; 
+	
+	@Autowired
+	private FotoRepository fotoRepository; 
+	
 	
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		// TODO Auto-generated method stub
-		this.addAll();
-		this.removeAll();
+		this.removeAllFunzionari();
+		this.addAllFunzionari();
+		this.removeAllFotografi();
+		this.addAllFotografi();
+		this.removeAllPics();
+		this.addAllPictures();
+		
 	}
 	
 	
-	private void addAll() {
+	private void addAllFunzionari() {
 		Funzionario f1 =new Funzionario();
 		f1.setNome("Mario");
 		f1.setCognome("Rossi");
@@ -36,7 +51,55 @@ public class DBPopulation implements ApplicationRunner{
 
 
 	}
-	private void removeAll() {
+	private void removeAllFunzionari() {
 		this.funzionarioRepository.deleteAll();
+	}
+	
+	private void addAllFotografi() {
+		Fotografo f1 = new Fotografo("Matteo", "Brandetti", "matteo.brandetti@gmail.com");
+		Fotografo f2 = new Fotografo("Adriano", "Vlad", "adriano.vlad@gmail.com");
+		
+		this.fotografoRepository.save(f1);
+		this.fotografoRepository.save(f2);
+
+		
+
+		
+	}
+	
+	
+	private void removeAllFotografi() {
+		this.fotografoRepository.deleteAll();
+	}
+	
+	
+	private void addAllPictures() {
+		Integer index = 1; 
+		
+		for(int i=0; i<6; i++) {
+			String filename = "pic.0" + index.toString() + ".jpg";
+			this.addPicture(filename, "pic.0"+ index.toString(), 5L);
+			index++; 
+		}
+		
+	}
+	
+	private void addPicture(String filename, String fotoName, Long prezzo) {
+		ClassPathResource resource= new ClassPathResource(filename);    
+		File file = new File(resource.getPath());
+		Foto f1 = new Foto(fotoName, prezzo); 
+		
+		
+        byte[] bFile = new byte[(int) file.length()];
+       
+
+		f1.setSorgenteImmagine(bFile);
+		
+		this.fotoRepository.save(f1);
+		
+	}
+	
+	private void removeAllPics() {
+		this.fotoRepository.deleteAll();
 	}
 }
