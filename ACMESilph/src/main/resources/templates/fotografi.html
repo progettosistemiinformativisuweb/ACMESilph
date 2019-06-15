@@ -59,7 +59,6 @@
 					<a th:each="fotografo : ${fotografi2}"
 						th:href="@{'images/fotografiImages/fulls/'+ ${fotografo.nomeImmagineAvatar}}"> <img
 						th:src="@{'images/fotografiImages/thumbs/'+ ${fotografo.nomeImmagineAvatar}}" alt="" />
-						<h3 th:text="${fotografo.nome} + ${fotografo.cognome}"></h3>
 						<h3 th:text="${fotografo.nome} + ' '+ ${fotografo.cognome}"></h3>
 					</a>
 				</div>
@@ -67,7 +66,6 @@
 					<a th:each="fotografo : ${fotografi3}"
 						th:href="@{'images/fotografiImages/fulls/'+ ${fotografo.nomeImmagineAvatar}}"> <img
 						th:src="@{'images/fotografiImages/thumbs/'+ ${fotografo.nomeImmagineAvatar}}" alt="" />
-						<h3 th:text="${fotografo.nome} + ${fotografo.cognome}"></h3>
 						<h3 th:text="${fotografo.nome} + ' '+ ${fotografo.cognome}"></h3>
 					</a>
 				</div>
