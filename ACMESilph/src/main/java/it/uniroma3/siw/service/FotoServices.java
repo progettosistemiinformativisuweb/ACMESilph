@@ -33,6 +33,10 @@ public class FotoServices {
 	public List<Foto> getAllFotoAsList() {
 		return this.getAllFoto().stream().collect(Collectors.toList());
 	}
+
+	public Foto getFotoByTitolo(String titolo) {
+		return this.fotoRepository.findFotoByTitolo(titolo);
+	}
 	
 	
 

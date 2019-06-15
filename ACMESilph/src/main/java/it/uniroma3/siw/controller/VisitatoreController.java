@@ -67,9 +67,9 @@ public class VisitatoreController {
 	}
 	
 	@RequestMapping(value="/getFoto/{id}", method=RequestMethod.GET)
-	public void getFoto(@PathVariable ("id") Long id, Model model, HttpServletResponse response) throws IOException {
+	public void getFoto(@PathVariable ("titolo") String titolo, Model model, HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		Foto foto  = this.fotoServices.getFotoById(id);
+		Foto foto  = this.fotoServices.getFotoByTitolo(titolo);
 		response.getOutputStream().write(foto.getSorgenteImmagine());
 	    response.getOutputStream().close();
 	}

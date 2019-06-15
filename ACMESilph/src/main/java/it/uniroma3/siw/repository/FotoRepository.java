@@ -20,5 +20,8 @@ public interface FotoRepository extends CrudRepository<Foto,Long>{
             + "WHERE fot.id = :id ")
     public Collection<Foto> findFotoByFotografoId(@Param("id") Long id);
 
+
+	public Foto findFotoByTitolo(String titolo);
+
 	
 }
