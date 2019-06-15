@@ -2,6 +2,7 @@ package it.uniroma3.siw.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.model.Foto;
+import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.Funzionario;
 import it.uniroma3.siw.model.RichiestaUtilizzo;
 import it.uniroma3.siw.service.AlbumServices;
@@ -79,7 +81,14 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/fotografi", method=RequestMethod.GET)
 	public String getFotografi(Model model) {
-		model.addAttribute("fotografi", this.fotografoServices.getAllFotografi());
+		List<Fotografo> fotografi= (List<Fotografo>) this.fotografoServices.getAllFotografi();
+		int dimension= fotografi.size()/3;
+		List<Fotografo> fotografi1=fotografi.subList(0, dimension);
+		List<Fotografo> fotografi2=fotografi.subList(dimension, dimension*2);
+		List<Fotografo> fotografi3=fotografi.subList(dimension*2, dimension*3);
+		model.addAttribute("fotografi1", fotografi1);
+		model.addAttribute("fotografi2", fotografi2);
+		model.addAttribute("fotografi3", fotografi3);
 		return "fotografi.html";
 	}
 	
