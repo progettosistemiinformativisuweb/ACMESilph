@@ -6,94 +6,103 @@
 -->
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
-	<head>
-		<title>SILPH SPA</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" th:href="@{/css/assetsIndex/css/main.css}" />
-	</head>
-	<body id="top">
+<head>
+<title>SILPH SPA</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" th:href="@{/css/assetsIndex/css/main.css}" />
+</head>
+<body id="top">
 
-			<!-- Banner -->
-			<!--
+	<!-- Banner -->
+	<!--
 				To use a video as your background, set data-video to the name of your video without
 				its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 				formats to work correctly.
 			-->
-				<section id="banner" th:data-video="@{/images/banner}">
+	<section id="banner" th:data-video="@{/images/banner}">
+		<div class="inner">
+			<header>
+				<h1>SILPH SPA</h1>
+				<p>
+					Una piattaforma per comprare le foto che hai sempre sognato<br />
+				</p>
+			</header>
+			<a href="#main" class="more">Learn More</a>
+		</div>
+	</section>
+
+	<!-- Main -->
+	<div id="main">
+		<div class="inner">
+
+			<!-- Boxes -->
+			<div class="thumbnails">
+
+				<div class="box">
+					<a th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img
+						th:src="@{/images/pic1.jpg}" alt="" /></a>
 					<div class="inner">
-						<header>
-							<h1>SILPH SPA</h1>
-							<p>Una piattaforma per comprare le foto che hai sempre sognato<br /></p>
-						</header>
-						<a href="#main" class="more">Learn More</a>
-					</div>
-				</section>
-
-			<!-- Main -->
-				<div id="main">
-					<div class="inner">
-
-					<!-- Boxes -->
-						<div class="thumbnails">
-
-							<div class="box">
-								<a  th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img th:src="@{/images/pic1.jpg}" alt="" /></a>
-								<div class="inner">
-									<h3>Galleria Foto</h3>
-									<p>Scorri la nostra galleria e acquista foto pazzesche.</p>
-									<a th:href="@{/galleriaFoto}" class="button fit" data-poptrox="youtube,800x400">Vai</a>
-								</div>
-							</div>
-
-							<div class="box">
-								<a th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img th:src="@{/images/pic2.jpg}" alt="" /></a>
-								<div class="inner">
-									<h3>Login</h3>
-									<p>Riservato a funzionari dell'azienda SILPH SPA.</p>
-									<a th:href="@{/getLogin}" class="button style2 fit" data-poptrox="youtube,800x400">Vai</a>
-								</div>
-							</div>
-
-							<div class="box">
-								<a th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img th:src="@{/images/pic03.jpg}" alt="" /></a>
-								<div class="inner">
-									<h3>Elenco Fotografi</h3>
-									<p>Scorri l'elenco dei migliori fotografi in circolazione.</p>
-									<a th:href="@{/fotografi}" class="button style3 fit" data-poptrox="youtube,800x400">Vai</a>
-								</div>
-							</div>
-
-
-							
-
-						</div>
-
+						<h3>Galleria Foto</h3>
+						<p>Scorri la nostra galleria e acquista foto pazzesche.</p>
+						<a th:href="@{/galleriaFoto}" class="button fit"
+							data-poptrox="youtube,800x400">Vai</a>
 					</div>
 				</div>
 
-			<!-- Footer -->
-				<footer id="footer">
+				<div class="box">
+					<a th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img
+						th:src="@{/images/pic2.jpg}" alt="" /></a>
 					<div class="inner">
-						<h2>Idea di Matteo Brandetti e Adriano Vlad, Dip. Ing. Informatica Università Roma Tre</h2>
-						<p>Realizzato usando <a href="https://templated.co">TEMPLATED </a> per il corso di Sistemi Informativi Su Web. </p>
-						<ul class="icons">
-							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<p class="copyright">&copy; Untitled. Design: <a th:href="@{https://templated.co}">TEMPLATED</a>. Images: <a th:href="@{https://unsplash.com/}">Unsplash</a>. Videos: <a href="@{http://coverr.co/}">Coverr</a>.</p>
+						<h3>Login</h3>
+						<p>Riservato a funzionari dell'azienda SILPH SPA.</p>
+						<a th:href="@{/getLogin}" class="button style2 fit"
+							data-poptrox="youtube,800x400">Vai</a>
 					</div>
-				</footer>
+				</div>
 
-		<!-- Scripts -->
-			<script src="/css/assetsIndex/js/jquery.min.js"></script>
-			<script src="/css/assetsIndex/js/jquery.scrolly.min.js"></script>
-			<script src="/css/assetsIndex/js/jquery.poptrox.min.js"></script>
-			<script src="/css/assetsIndex/js/skel.min.js"></script>
-			<script src="/css/assetsIndex/js/util.js"></script>
-			<script src="/css/assetsIndex/js/main.js"></script>
+				<div class="box">
+					<a th:href="@{https://youtu.be/s6zR2T9vn2c}" class="image fit"><img
+						th:src="@{/images/pic03.jpg}" alt="" /></a>
+					<div class="inner">
+						<h3>Elenco Fotografi</h3>
+						<p>Scorri l'elenco dei migliori fotografi in circolazione.</p>
+						<a th:href="@{/fotografi}" class="button style3 fit"
+							data-poptrox="youtube,800x400">Vai</a>
+					</div>
+				</div>
 
-	</body>
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<p>Realizzato da Adriano Vlad e Matteo Brandetti
+			<ul class="icons">
+				<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon fa-facebook"><span
+						class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon fa-instagram"><span
+						class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon fa-envelope"><span
+						class="label">Email</span></a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="/css/assetsIndex/js/jquery.min.js"></script>
+	<script src="/css/assetsIndex/js/jquery.scrolly.min.js"></script>
+	<script src="/css/assetsIndex/js/jquery.poptrox.min.js"></script>
+	<script src="/css/assetsIndex/js/skel.min.js"></script>
+	<script src="/css/assetsIndex/js/util.js"></script>
+	<script src="/css/assetsIndex/js/main.js"></script>
+
+</body>
 </html>
