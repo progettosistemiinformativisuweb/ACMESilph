@@ -41,22 +41,22 @@
 			<section class="thumbnails">
 				<div>
 					<a th:each="fotografo : ${fotografi1}"
-						th:href="@{images/fotografiImages/fulls/01.jpg}"> <img
-						th:src="@{images/fotografiImages/thumbs/01.jpg}" alt="" />
+						th:href="@{'images/fotografiImages/fulls/'+ ${fotografo.nomeImmagineAvatar}}"> <img
+						th:src="@{'images/fotografiImages/thumbs/'+ ${fotografo.nomeImmagineAvatar}}" alt="" />
 						<h3 th:text="${fotografo.nome} + ${fotografo.cognome}"></h3>
 					</a>
 				</div>
 				<div>
 					<a th:each="fotografo : ${fotografi2}"
-						th:href="@{images/fotografiImages/fulls/03.jpg}"> <img
-						th:src="@{images/fotografiImages/thumbs/03.jpg}" alt="" />
+						th:href="@{'images/fotografiImages/fulls/'+ ${fotografo.nomeImmagineAvatar}}"> <img
+						th:src="@{'images/fotografiImages/thumbs/'+ ${fotografo.nomeImmagineAvatar}}" alt="" />
 						<h3 th:text="${fotografo.nome} + ${fotografo.cognome}"></h3>
 					</a>
 				</div>
 				<div>
 					<a th:each="fotografo : ${fotografi3}"
-						th:href="@{images/fotografiImages/fulls/06.jpg}"> <img
-						th:src="@{images/fotografiImages/thumbs/06.jpg}" alt="" />
+						th:href="@{'images/fotografiImages/fulls/'+ ${fotografo.nomeImmagineAvatar}}"> <img
+						th:src="@{'images/fotografiImages/thumbs/'+ ${fotografo.nomeImmagineAvatar}}" alt="" />
 						<h3 th:text="${fotografo.nome} + ${fotografo.cognome}"></h3>
 					</a>
 				</div>

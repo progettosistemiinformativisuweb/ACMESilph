@@ -21,19 +21,32 @@ public class Fotografo {
 	@Column
 	private String email;
 	
+	@Column
+	private String nomeImmagineAvatar;
 	
 	
+	
+	public String getNomeImmagineAvatar() {
+		return nomeImmagineAvatar;
+	}
+
+
+	public void setNomeImmagineAvatar(String nomeImmagineAvatar) {
+		this.nomeImmagineAvatar = nomeImmagineAvatar;
+	}
+
 	@OneToMany(mappedBy="fotografo", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Album> album;
 	
 	
 	
 
-	public Fotografo(String nome, String cognome, String email) {
+	public Fotografo(String nome, String cognome, String email, String nomeImmagineAvatar) {
 		this.nome=nome;
 		this.cognome=cognome;
 		this.email=email;
 		this.album=new ArrayList<Album>();
+		this.nomeImmagineAvatar=nomeImmagineAvatar;
 	}
 	
 	

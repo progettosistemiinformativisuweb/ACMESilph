@@ -56,12 +56,12 @@ public class DBPopulation implements ApplicationRunner{
 	}
 	
 	private void addAllFotografi() {
-		Fotografo f1 = new Fotografo("Matteo", "Brandetti", "matteo.brandetti@gmail.com");
-		Fotografo f2 = new Fotografo("Adriano", "Vlad", "adriano.vlad@gmail.com");
-		Fotografo f3 = new Fotografo("Marco", "Rossi", "marco.rossi@gmail.com");
-		Fotografo f4 = new Fotografo("Giovanni", "Verdi", "givoanni.verdi@gmail.com");
-		Fotografo f5 = new Fotografo("Andrea", "Bianchi", "andrea.bianchi@gmail.com");
-		Fotografo f6 = new Fotografo("Francesco", "Neri", "francesco.neri@gmail.com");
+		Fotografo f1 = new Fotografo("Matteo", "Brandetti", "matteo.brandetti@gmail.com", "01.jpg");
+		Fotografo f2 = new Fotografo("Adriano", "Vlad", "adriano.vlad@gmail.com", "02.jpg");
+		Fotografo f3 = new Fotografo("Marco", "Rossi", "marco.rossi@gmail.com", "03.jpg");
+		Fotografo f4 = new Fotografo("Giovanni", "Verdi", "givoanni.verdi@gmail.com", "04.jpg");
+		Fotografo f5 = new Fotografo("Andrea", "Bianchi", "andrea.bianchi@gmail.com", "05.jpg");
+		Fotografo f6 = new Fotografo("Francesco", "Neri", "francesco.neri@gmail.com", "06.jpg");
 		
 		
 		this.fotografoRepository.save(f1);

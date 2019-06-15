@@ -1410,7 +1410,7 @@
 
 	body {
 		background-color: #000;
-		background-image: url("ACMESilph/src/main/resources/static/images/fotografiImages/bg.jpg");
+		background-image: url("images/fotografiImages/bg.jpg");
 		background-size: cover;
 		background-position: top center;
 	}
