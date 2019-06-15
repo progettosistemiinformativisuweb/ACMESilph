@@ -74,8 +74,13 @@ public class DBPopulation implements ApplicationRunner{
 	
 	
 	private void addAllPictures() {		
-		for(int i=1; i<7; i++) {
-			String filename = "pic0" + (Integer.valueOf(i)).toString() + ".jpg";
+		for(int i=1; i<10; i++) {
+			String filename = "0" + (Integer.valueOf(i)).toString() + ".jpg";
+			this.addPicture(filename, filename, 5L);
+		}
+		
+		for(int i=1; i<4; i++) {
+			String filename = "1" + (Integer.valueOf(i)).toString() + ".jpg";
 			this.addPicture(filename, filename, 5L);
 		}
 		
