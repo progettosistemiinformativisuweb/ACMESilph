@@ -24,6 +24,11 @@ public class RichiestaUtilizzo {
 	private String email; 
 
 	
+	@Column
+
+	private String nota; 
+
+	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Foto> foto; 
 	
@@ -114,6 +119,16 @@ public class RichiestaUtilizzo {
 		this.nome =nome; 
 		this.email = email; 
 		
+	}
+
+
+	public String getNota() {
+		return nota;
+	}
+
+
+	public void setNota(String nota) {
+		this.nota = nota;
 	}
 	
 	
