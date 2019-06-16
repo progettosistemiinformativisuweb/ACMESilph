@@ -56,20 +56,20 @@ public class DBPopulation implements ApplicationRunner{
 	}
 	
 	private void addAllFotografi() {
-		Fotografo f1 = new Fotografo("Matteo", "Brandetti", "matteo.brandetti@gmail.com", "01.jpg");
-		Fotografo f2 = new Fotografo("Adriano", "Vlad", "adriano.vlad@gmail.com", "02.jpg");
-		Fotografo f3 = new Fotografo("Marco", "Rossi", "marco.rossi@gmail.com", "03.jpg");
-		Fotografo f4 = new Fotografo("Giovanni", "Verdi", "givoanni.verdi@gmail.com", "04.jpg");
-		Fotografo f5 = new Fotografo("Andrea", "Bianchi", "andrea.bianchi@gmail.com", "05.jpg");
-		Fotografo f6 = new Fotografo("Francesco", "Neri", "francesco.neri@gmail.com", "06.jpg");
+		Fotografo f1 = new Fotografo("Matteo", "Brandetti", "matteo.brandetti@gmail.com");
+		Fotografo f3 = new Fotografo("Marco", "Rossi", "marco.rossi@gmail.com");
+		Fotografo f2 = new Fotografo("Adriano", "Vlad", "adriano.vlad@gmail.com");
+		Fotografo f4 = new Fotografo("Giovanni", "Verdi", "givoanni.verdi@gmail.com");
+		Fotografo f5 = new Fotografo("Andrea", "Bianchi", "andrea.bianchi@gmail.com");
+		Fotografo f6 = new Fotografo("Francesco", "Neri", "francesco.neri@gmail.com");
 		
 		
-		this.fotografoRepository.save(f1);
-		this.fotografoRepository.save(f2);
-		this.fotografoRepository.save(f3);
-		this.fotografoRepository.save(f4);
-		this.fotografoRepository.save(f5);
-		this.fotografoRepository.save(f6);
+		this.saveFotografoWithAvatar(f1, "01.jpg");
+		this.saveFotografoWithAvatar(f2, "02.jpg");
+		this.saveFotografoWithAvatar(f3, "03.jpg");
+		this.saveFotografoWithAvatar(f4, "04.jpg");
+		this.saveFotografoWithAvatar(f5, "05.jpg");
+		this.saveFotografoWithAvatar(f6, "06.jpg");
 		
 
 		
@@ -115,6 +115,26 @@ public class DBPopulation implements ApplicationRunner{
 	   
 		
 		this.fotoRepository.save(f1);
+		
+	}
+	
+	private void saveFotografoWithAvatar(Fotografo fotografo, String filename) {		
+		ClassPathResource path = new ClassPathResource("/static/images/fotografiImages/thumbs/"+ filename);
+
+	    byte[] arrayPic;
+
+		try {
+			arrayPic = new byte[(int) path.contentLength()];
+
+			 path.getInputStream().read(arrayPic);	
+
+	    	fotografo.setSorgenteAvatar(new SorgenteImmagine(arrayPic));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	   
+		
+		this.fotografoRepository.save(fotografo);
 		
 	}
 	

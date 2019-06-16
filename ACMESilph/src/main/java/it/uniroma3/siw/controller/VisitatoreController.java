@@ -141,6 +141,14 @@ public class VisitatoreController {
 		
 		return "galleria.html";
 	}
+	
+	@RequestMapping(value="/getFotografoAvatar/{id}", method=RequestMethod.GET)
+	public void getFotografoAvatar(@PathVariable ("id") Long id, Model model, HttpServletResponse response) throws IOException {
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		Fotografo fotografo  = this.fotografoServices.getFotografoByIdWithSorgenteAvatar(id);
+		response.getOutputStream().write(fotografo.getSorgenteAvatar().getSorgente());
+	    response.getOutputStream().close();
+	}
 
 	
 	

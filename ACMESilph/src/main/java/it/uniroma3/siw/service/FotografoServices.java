@@ -37,5 +37,9 @@ public class FotografoServices {
 	public Fotografo getFotografoByIdWithAlbum(Long id) {
 		return this.fotografoRepository.findByIdWithAlbum(id);
 	}
+	
+	public Fotografo getFotografoByIdWithSorgenteAvatar(Long id) {
+		return this.fotografoRepository.findFotografoByIdWithSorgenteAvatar(id);
+	}
 
 }

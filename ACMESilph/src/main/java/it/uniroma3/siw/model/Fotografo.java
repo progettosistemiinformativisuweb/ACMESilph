@@ -21,19 +21,23 @@ public class Fotografo {
 	@Column
 	private String email;
 	
-	@Column
-	private String nomeImmagineAvatar;
+
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private SorgenteImmagine sorgenteAvatar;
 	
 	
 	
-	public String getNomeImmagineAvatar() {
-		return nomeImmagineAvatar;
+	public SorgenteImmagine getSorgenteAvatar() {
+		return sorgenteAvatar;
 	}
 
 
-	public void setNomeImmagineAvatar(String nomeImmagineAvatar) {
-		this.nomeImmagineAvatar = nomeImmagineAvatar;
+	public void setSorgenteAvatar(SorgenteImmagine sorgenteAvatar) {
+		this.sorgenteAvatar = sorgenteAvatar;
 	}
+
+
 
 	@OneToMany(mappedBy="fotografo", cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Album> album;
@@ -41,12 +45,11 @@ public class Fotografo {
 	
 	
 
-	public Fotografo(String nome, String cognome, String email, String nomeImmagineAvatar) {
+	public Fotografo(String nome, String cognome, String email) {
 		this.nome=nome;
 		this.cognome=cognome;
 		this.email=email;
 		this.album=new ArrayList<Album>();
-		this.nomeImmagineAvatar=nomeImmagineAvatar;
 	}
 	
 	
