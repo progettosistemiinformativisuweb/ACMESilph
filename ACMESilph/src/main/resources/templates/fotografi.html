@@ -50,8 +50,8 @@
 			<section class="thumbnails">
 				<div>
 					<a th:each="fotografo : ${fotografi1}"
-						th:href="@{'/getFotografo/' + ${fotografo.id}}"> <img
-						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="" />
+						th:href="@{'/fotografo/' + ${fotografo.id}}"><img
+						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="">
 						<h3 th:text="${fotografo.nome} + ' '+ ${fotografo.cognome}"></h3>
 				     	<h3 th:text="${fotografo.email}"></h3>
 						
@@ -59,8 +59,8 @@
 				</div>
 				<div>
 					<a th:each="fotografo : ${fotografi2}"
-						th:href="@{'/getFotografo/' + ${fotografo.id}}"> <img
-						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="" />
+						th:href="@{'/fotografo/' + ${fotografo.id}}"><img
+						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="">
 						<h3 th:text="${fotografo.nome} + ' '+ ${fotografo.cognome}"></h3>
 						<h3 th:text="${fotografo.email}"></h3>
 						
@@ -68,8 +68,8 @@
 				</div>
 				<div>
 					<a th:each="fotografo : ${fotografi3}"
-						th:href="@{'/getFotografo/' + ${fotografo.id}}"> <img
-						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="" />
+						th:href="@{'/fotografo/' + ${fotografo.id}}"><img
+						th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt="">
 						<h3 th:text="${fotografo.nome} + ' '+ ${fotografo.cognome}"></h3>
 						<h3 th:text="${fotografo.email}"></h3>
 						
@@ -88,7 +88,6 @@
 
 	<!-- Scripts -->
 	<script src="/css/assetsFotografi/js/jquery.min.js"></script>
-	<script src="/css/assetsFotografi/js/jquery.poptrox.min.js"></script>
 	<script src="/css/assetsFotografi/js/skel.min.js"></script>
 	<script src="/css/assetsFotografi/js/main.js"></script>
 

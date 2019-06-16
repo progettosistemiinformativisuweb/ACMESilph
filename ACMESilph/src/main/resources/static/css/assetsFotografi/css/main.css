@@ -2434,7 +2434,7 @@
 		margin: 0 0 2em -2em;
 	}
 
-		.thumbnails a {
+		/*.thumbnails a {
 			-moz-transition: all 0.2s ease;
 			-webkit-transition: all 0.2s ease;
 			-ms-transition: all 0.2s ease;
@@ -2450,7 +2450,7 @@
 			cursor: pointer;
 			outline: 0;
 			overflow: hidden;
-		}
+		}*/
 
 			.thumbnails a img {
 				display: block;

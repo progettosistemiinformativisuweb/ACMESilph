@@ -12,7 +12,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a th:href="@{/}"><span class="icon fa-home"></span></a></li>
-				<li><a th:href="@{/fotografi}" class="active"><span
+				<li><a th:href="@{/fotografo}" class="active"><span
 						class="icon fa-camera-retro"></span></a></li>
 			</ul>
 		</nav>
@@ -24,9 +24,10 @@
 		<!-- Header -->
 		<header id="header">
 			<span class="avatar"><img
-				src="images/fotografiImages/avatar.jpg" alt="" /></span>
-			<h1 th:text="${fotografo.nome}+' '+${fotografo.cognome}">
-			</h1>
+				th:src="@{'/getFotografoAvatar/'+ ${fotografo.id}}" alt=""></span>
+						
+			<h1 th:text="${fotografo.nome}+' '+${fotografo.cognome}"></h1>
+			<h3 th:text="${fotografo.email}"></h3>
 			<ul class="icons">
 				<li><a href="#" class="icon style2 fa-twitter"><span
 						class="label">Twitter</span></a></li>

@@ -98,7 +98,7 @@ public class VisitatoreController {
 	@RequestMapping(value="/fotografo/{id}", method=RequestMethod.GET)
 	public String getFotografo(@PathVariable ("id") Long id, Model model) {
 		model.addAttribute("fotografo", this.fotografoServices.getFotografoById(id));
-		model.addAttribute("albums", this.albumServices.getAlbumsByFotografoId(id));
+		//model.addAttribute("albums", this.albumServices.getAlbumsByFotografoId(id));
 		return "fotografo.html";
 	}
 	
