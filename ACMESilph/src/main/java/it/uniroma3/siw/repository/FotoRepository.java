@@ -22,6 +22,13 @@ public interface FotoRepository extends CrudRepository<Foto,Long>{
 
 
 	public Foto findFotoByTitolo(String titolo);
+	
+	
+	@Query("SELECT f " +
+            "FROM Foto f "
+            + "JOIN FETCH f.sorgenteImmagine "
+            + "WHERE f.id = :id ")
+	public Foto findFotoByIdWithSorgente(Long id); 
 
 	
 }

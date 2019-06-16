@@ -37,6 +37,10 @@ public class FotoServices {
 	public Foto getFotoByTitolo(String titolo) {
 		return this.fotoRepository.findFotoByTitolo(titolo);
 	}
+
+	public Foto getFotoByIdWithSorgente(Long id) {
+		return this.fotoRepository.findFotoByIdWithSorgente(id); 
+	}
 	
 	
 

@@ -48,9 +48,9 @@
 					<div class="content">
 
 						<div th:each="photo : ${photos}" class="media all people">
-							<a th:href="@{'images/full/' + ${photo.titolo}}"><img
-								th:src="@{'images/thumbs/' + ${photo.titolo}}" alt=""
-								th:title="'Prezzo: '+ ${photo.prezzo}+ ' euro'" /></a>
+							<a th:href="@{'getFoto/' + ${photo.id}}"><img
+								th:src="@{'getFoto/' + ${photo.id}}" alt=""
+								th:title="'Titolo:  ' + ${photo.titolo}+ '  ' + 'Prezzo: '+ ${photo.prezzo}+ ' euro'" /></a>
 						</div>
 
 

@@ -48,10 +48,11 @@ public class VisitatoreController {
 	private RichiestaUtilizzoValidator richiestaUtilizzoValidator;
 	
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value = "/",method=RequestMethod.GET)
 	public String getIndex() {
 		return "index.html"; 
 	}
+	
 	
 	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
 	public String login(@ModelAttribute ("possibileFunzionario") Funzionario possibileFunzionario, Model model) {
@@ -72,12 +73,14 @@ public class VisitatoreController {
 	}
 	
 	@RequestMapping(value="/getFoto/{id}", method=RequestMethod.GET)
-	public void getFoto(@PathVariable ("titolo") String titolo, Model model, HttpServletResponse response) throws IOException {
+	public void getFoto(@PathVariable ("id") Long id, Model model, HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		Foto foto  = this.fotoServices.getFotoByTitolo(titolo);
-		response.getOutputStream().write(foto.getSorgenteImmagine());
+		Foto foto  = this.fotoServices.getFotoByIdWithSorgente(id);
+		response.getOutputStream().write(foto.getSorgenteImmagine().getSorgente());
 	    response.getOutputStream().close();
 	}
+	
+	
 	
 	@RequestMapping(value="/fotografi", method=RequestMethod.GET)
 	public String getFotografi(Model model) {
@@ -133,6 +136,7 @@ public class VisitatoreController {
 			this.richiestaUtilizzoServices.add(richiesta);
 			
 		}
+		
 		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
 		
 		return "galleria.html";

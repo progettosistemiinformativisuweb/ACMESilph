@@ -1,7 +1,6 @@
 package it.uniroma3.siw.repository;
 
-import java.io.File;
-
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Component;
 import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.Funzionario;
+import it.uniroma3.siw.model.SorgenteImmagine;
 
 
 @Component
@@ -85,27 +85,34 @@ public class DBPopulation implements ApplicationRunner{
 	
 	private void addAllPictures() {		
 		for(int i=1; i<10; i++) {
-			String filename = "0" + (Integer.valueOf(i)).toString() + ".jpg";
+			String filename = "galleria0" + (Integer.valueOf(i)).toString() + ".jpg";
 			this.addPicture(filename, filename, 5L);
 		}
 		
-		for(int i=1; i<4; i++) {
-			String filename = "1" + (Integer.valueOf(i)).toString() + ".jpg";
+		for(int i=1; i<3; i++) {
+			String filename = "galleria1" + (Integer.valueOf(i)).toString() + ".jpg";
 			this.addPicture(filename, filename, 5L);
 		}
 		
 	}
 	
 	private void addPicture(String filename, String fotoName, Long prezzo) {
-		ClassPathResource resource= new ClassPathResource(filename);    
-		File file = new File(resource.getPath());
 		Foto f1 = new Foto(fotoName, prezzo); 
 		
-		
-        byte[] bFile = new byte[(int) file.length()];
-       
+		ClassPathResource path = new ClassPathResource("static/images/thumbs/"+ fotoName);
 
-		f1.setSorgenteImmagine(bFile);
+	    byte[] arrayPic;
+
+		try {
+			arrayPic = new byte[(int) path.contentLength()];
+
+			 path.getInputStream().read(arrayPic);	
+
+	    	f1.setSorgenteImmagine(new SorgenteImmagine(arrayPic));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	   
 		
 		this.fotoRepository.save(f1);
 		

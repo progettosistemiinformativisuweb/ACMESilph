@@ -6,23 +6,23 @@ import javax.persistence.*;
 public class Foto {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column
 	private String titolo;
-	
+
 	@Column
 	private Long prezzo;
-	
+
 	@ManyToOne
 	private Fotografo fotografo;
+
 	
-	
-	 @Lob
-	 @Column(nullable=false)
-     private byte[] sorgenteImmagine;
-	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	private SorgenteImmagine sorgenteImmagine;
+	 
+	 
 	
 
 	public Foto(String titolo, Long prezzo, Fotografo fotografo) {
@@ -82,15 +82,25 @@ public class Foto {
 		this.fotografo = fotografo;
 	}
 
-	public byte[] getSorgenteImmagine() {
+
+
+	
+	public void setSorgenteImmagine(SorgenteImmagine sorgenteImmagine) {
+		this.sorgenteImmagine = sorgenteImmagine;
+	}
+
+
+
+	public SorgenteImmagine getSorgenteImmagine() {
 		return sorgenteImmagine;
 	}
 
-	public void setSorgenteImmagine(byte[] sorgenteImmagine) {
-		this.sorgenteImmagine = sorgenteImmagine;
-	}
+	
 	
 
+
+
+	
 	
 	
 
