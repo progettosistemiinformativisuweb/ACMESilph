@@ -1,6 +1,8 @@
 package it.uniroma3.siw.repository;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.Funzionario;
+import it.uniroma3.siw.model.RichiestaUtilizzo;
 import it.uniroma3.siw.model.SorgenteImmagine;
 
 
@@ -25,7 +28,8 @@ public class DBPopulation implements ApplicationRunner{
 	@Autowired
 	private FotoRepository fotoRepository; 
 	
-	
+	@Autowired
+	private RichiestaUtilizzoRepository richiestaUtilizzoRepository; 
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
@@ -35,6 +39,8 @@ public class DBPopulation implements ApplicationRunner{
 		this.addAllFotografi();
 		this.removeAllPics();
 		this.addAllPictures();
+		this.removeAllRichiesteUtlizzo();
+		this.addAllRichiesteUtilizzo();
 		
 	}
 	
@@ -136,6 +142,18 @@ public class DBPopulation implements ApplicationRunner{
 		
 		this.fotografoRepository.save(fotografo);
 		
+	}
+	private void addAllRichiesteUtilizzo() {
+		RichiestaUtilizzo ru = new RichiestaUtilizzo(LocalDate.now(), "Matteo", "Cognome", "matteo.brandetti@gmail.com");
+		RichiestaUtilizzo ru2 = new RichiestaUtilizzo(LocalDate.now(), "Adriano", "Vlad", "adriano.vlad@gmail.com");
+
+		this.richiestaUtilizzoRepository.save(ru);
+		this.richiestaUtilizzoRepository.save(ru2);
+
+	}
+	
+	private void removeAllRichiesteUtlizzo() {
+		this.richiestaUtilizzoRepository.deleteAll();
 	}
 	
 	private void removeAllPics() {

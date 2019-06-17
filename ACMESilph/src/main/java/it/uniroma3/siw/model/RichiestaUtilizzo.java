@@ -36,9 +36,22 @@ public class RichiestaUtilizzo {
 
 	
 	
+	
+	public RichiestaUtilizzo(LocalDate data, String nome, String cognome, String email) {
+		super();
+		this.data = data;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+	}
+
+
 	public RichiestaUtilizzo() {
 		super();
 	}
+
+
+	
 
 
 	public Long getTotale() {

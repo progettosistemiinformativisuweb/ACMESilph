@@ -19,6 +19,7 @@ import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.Funzionario;
+import it.uniroma3.siw.model.InvalidPasswordRuntimeException;
 import it.uniroma3.siw.model.RichiestaUtilizzo;
 import it.uniroma3.siw.service.AlbumServices;
 import it.uniroma3.siw.service.FotoServices;
@@ -56,13 +57,20 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
 	public String login(@ModelAttribute ("funzionario") Funzionario possibileFunzionario, Model model) {
+		String nextPage = "login.html";
 		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
-		if(funzionario!=null && funzionario.checkPassword(possibileFunzionario.getPassword())) {
-				model.addAttribute("funzionarioCorrente", funzionario);
-				return "elencoAttivita.html";
+		if(funzionario!=null) {
+			    try {
+			    	if(funzionario.checkPassword(possibileFunzionario.getPassword())) {
+			    		nextPage = "elencoAttivita.html"; 
+						model.addAttribute("funzionarioCorrente", funzionario);
+			    	}
+			    }
+			    catch(InvalidPasswordRuntimeException exception) {
+			    	
+			    }
 		}
-		else
-			return "login.html";
+		return nextPage; 
 	}
 	
 	@RequestMapping(value="/galleriaFoto", method=RequestMethod.GET)
