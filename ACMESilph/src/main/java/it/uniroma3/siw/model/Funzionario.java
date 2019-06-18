@@ -12,7 +12,7 @@ public class Funzionario {
 	@Column
 	private String username; 
 	
-	@Column
+	@Column(length = 255)
 	private String password;
 	
 	@Column

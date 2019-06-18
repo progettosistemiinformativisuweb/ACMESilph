@@ -55,7 +55,9 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 
 				// login paragraph: we are going to define here how to login
 				// use formlogin protocol to perform login
-				.and().formLogin().loginPage("/login").permitAll()
+				.and().formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/elencoAttivita")
+				
+				
 
 				// NOTE: we are using the default configuration for login,
 				// meaning that the /login url is automatically mapped to auto-generated page.

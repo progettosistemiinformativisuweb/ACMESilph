@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import it.uniroma3.siw.model.Foto;
@@ -50,7 +51,9 @@ public class DBPopulation implements ApplicationRunner{
 		f1.setNome("Mario");
 		f1.setCognome("Rossi");
 		f1.setUsername("mario.rossi@gmail.com");
-        f1.setPassword("password");
+        
+        String adminPassword = new BCryptPasswordEncoder().encode("password");
+        f1.setPassword(adminPassword);
 
         f1.setRuolo("ADMIN");
 		
