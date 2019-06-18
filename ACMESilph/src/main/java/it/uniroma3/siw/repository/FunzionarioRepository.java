@@ -7,13 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.siw.model.Funzionario;
 @Repository
-public interface FunzionarioRepository extends CrudRepository<Funzionario, Long> {
+public interface FunzionarioRepository extends CrudRepository<Funzionario, String> {
 	
     public Collection<Funzionario> findAll();
     
-    public Funzionario findByUsernameAndPassword(String username, String password);
+    public Funzionario findByEmailAndPassword(String email, String password);
 
-	public Funzionario findByUsername(String username);
+	public Funzionario findByEmail(String email);
 
 	
 
