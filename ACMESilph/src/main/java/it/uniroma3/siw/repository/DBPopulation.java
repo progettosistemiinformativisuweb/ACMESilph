@@ -50,7 +50,8 @@ public class DBPopulation implements ApplicationRunner{
 		f1.setNome("Mario");
 		f1.setCognome("Rossi");
 		f1.setEmail("mario.rossi@gmail.com");
-		f1.setPassword("password");
+        f1.setPassword("password");
+
 		
 	
 		this.funzionarioRepository.save(f1);

@@ -57,7 +57,7 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
 	public String login(@ModelAttribute ("funzionario") Funzionario possibileFunzionario, Model model) {
-		String nextPage = "login.html";
+		String nextPage = "index.html";
 		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
 		if(funzionario!=null) {
 			    try {
@@ -78,6 +78,12 @@ public class VisitatoreController {
 		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
 		model.addAttribute("richiestaUtilizzo", new RichiestaUtilizzo());
 		return "galleria.html";
+	}
+	
+	
+	@RequestMapping(value="/elencoAttivita", method=RequestMethod.GET)
+	public String getElencoAttivita() {
+		return "elencoAttivita.html";
 	}
 	
 	@RequestMapping(value="/getFoto/{id}", method=RequestMethod.GET)
@@ -126,7 +132,7 @@ public class VisitatoreController {
 	public String getLogin(Model model) {
 		Funzionario funzionario=new Funzionario();
 		model.addAttribute("funzionario", funzionario);
-		return "login";
+		return "login.html";
 	}
 	
 	

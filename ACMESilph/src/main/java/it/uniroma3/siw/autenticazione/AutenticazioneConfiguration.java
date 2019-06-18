@@ -1,19 +1,14 @@
 package it.uniroma3.siw.autenticazione;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import javax.sql.DataSource;
 
 /**
  * The AuthConfiguration is a Spring Security Configuration.
@@ -23,13 +18,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 
-    /**
-     * A reference to the environment of properties defined through the application.properties file.
-     * It is automatically wired before at launch.
-     */
-    @Autowired
-    private Environment environment;
-
+    
    
 
     /**
@@ -42,6 +31,7 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 				// authorization paragraph: we are going to define here WHO can access WHAT
 				// pages
 				.authorizeRequests()
+
 
 				// everyone (authenticated or not) can access the home page
 				.antMatchers(HttpMethod.GET, "/", "/index", "/galleriaFoto", "/getFoto/{id}", "/fotografi",
@@ -56,7 +46,7 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 
 				// login paragraph: we are going to define here how to login
 				// use formlogin protocol to perform login
-				.and().formLogin().loginPage("/login").permitAll()
+				.and().formLogin().loginPage("/getLogin").permitAll()
 
 				// NOTE: we are using the default configuration for login,
 				// meaning that the /login url is automatically mapped to auto-generated page.
@@ -67,27 +57,16 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 				// logout paragraph: we are going to define here how to logout
 				.and().logout().permitAll();
     }
+    
+    /**
+     * Ignoriamo le richieste ai fogli di stile
+     */
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**").anyRequest();
+	public void configure(WebSecurity web) {
+        web.ignoring().antMatchers("/css/**", "/images/**");
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(this.buildDatasource())
-                .authoritiesByUsernameQuery("SELECT username, role FROM users WHERE username=?")
-                .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM users WHERE username=?");
-    }
-
-    @Bean
-    DataSource buildDatasource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
-        dataSource.setUrl(environment.getProperty("spring.datasource.url"));
-        dataSource.setUsername(environment.getProperty("spring.datasource.username"));
-        dataSource.setPassword(environment.getProperty("spring.datasource.password"));
-        return dataSource;
-    }
+  
 
     @Bean
     PasswordEncoder passwordEncoder() {

@@ -23,7 +23,7 @@ public class Fotografo {
 	
 
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private SorgenteImmagine sorgenteAvatar;
 	
 	

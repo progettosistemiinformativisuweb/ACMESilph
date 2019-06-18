@@ -19,7 +19,7 @@ public class Foto {
 	private Fotografo fotografo;
 
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
 	private SorgenteImmagine sorgenteImmagine;
 	 
 	 
