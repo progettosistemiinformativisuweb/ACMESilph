@@ -6,7 +6,11 @@ import javax.persistence.*;
 public class Funzionario {
 
 	@Id
-	private String email;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id; 
+	
+	@Column
+	private String username;
 	
 	@Column
 	private String password;
@@ -16,6 +20,9 @@ public class Funzionario {
 	
 	@Column
 	private String cognome;
+	
+	@Column
+	private String ruolo;
 	
 	
 
@@ -27,19 +34,31 @@ public class Funzionario {
 		
 	}
 	
-	
-	
-	
-	
-	
 
-	public String getEmail() {
-		return email;
+	
+	public Long getId() {
+		return id;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
 
 	public String getPassword() {
 		return password;
@@ -63,6 +82,14 @@ public class Funzionario {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+
+	public String getRuolo() {
+		return ruolo;
+	}
+
+	public void setRuolo(String ruolo) {
+		this.ruolo = ruolo;
 	}
 
 	

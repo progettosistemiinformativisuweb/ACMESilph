@@ -49,9 +49,10 @@ public class DBPopulation implements ApplicationRunner{
 		Funzionario f1 =new Funzionario();
 		f1.setNome("Mario");
 		f1.setCognome("Rossi");
-		f1.setEmail("mario.rossi@gmail.com");
+		f1.setUsername("mario.rossi@gmail.com");
         f1.setPassword("password");
 
+        f1.setRuolo("ADMIN");
 		
 	
 		this.funzionarioRepository.save(f1);

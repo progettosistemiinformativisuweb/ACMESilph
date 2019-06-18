@@ -57,8 +57,8 @@ public class VisitatoreController {
 	
 	@RequestMapping(value="/loginAttempt", method=RequestMethod.POST)
 	public String login(@ModelAttribute ("funzionario") Funzionario possibileFunzionario, Model model) {
-		String nextPage = "index.html";
-		Funzionario funzionario=this.funzionarioServices.getFunzionarioByEmail(possibileFunzionario.getEmail());
+		String nextPage = "login.html";
+		Funzionario funzionario=this.funzionarioServices.getFunzionarioByUsername(possibileFunzionario.getUsername());
 		if(funzionario!=null) {
 			    try {
 			    	if(funzionario.checkPassword(possibileFunzionario.getPassword())) {
@@ -128,7 +128,7 @@ public class VisitatoreController {
 	
 	
 	
-	@RequestMapping(value="/getLogin", method=RequestMethod.GET)
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String getLogin(Model model) {
 		Funzionario funzionario=new Funzionario();
 		model.addAttribute("funzionario", funzionario);

@@ -22,9 +22,7 @@ public class FunzionarioServices {
 		this.funzionarioRepository.save(funzionario);
 	}
 
-	public Funzionario getFunzionarioByEmail(String email) {
-		return this.funzionarioRepository.findById(email).orElse(null);
-	}
+	
 
 	public Collection<Funzionario> getAllFunzionari() {
 		return this.funzionarioRepository.findAll();
@@ -32,6 +30,10 @@ public class FunzionarioServices {
 	
 	public List<Funzionario> getAllFunzionariAsList() {
 		return this.getAllFunzionari().stream().collect(Collectors.toList());
+	}
+
+	public Funzionario getFunzionarioByUsername(String username) {
+		return this.funzionarioRepository.findByUsername(username);
 	}
 	
 }
