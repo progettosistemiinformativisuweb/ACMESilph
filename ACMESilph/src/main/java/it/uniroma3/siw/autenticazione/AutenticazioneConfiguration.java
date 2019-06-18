@@ -72,7 +72,7 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
 	public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/resources/**");
+        web.ignoring().antMatchers("/css/**", "/images/**");
     }
 
     @Autowired

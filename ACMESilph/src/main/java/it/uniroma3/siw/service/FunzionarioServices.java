@@ -32,8 +32,8 @@ public class FunzionarioServices {
 		return this.getAllFunzionari().stream().collect(Collectors.toList());
 	}
 
-	public Funzionario getFunzionarioByUsername(String email) {
-		return this.funzionarioRepository.findByEmail(email);
+	public Funzionario getFunzionarioByUsername(String username) {
+		return this.funzionarioRepository.findByUsername(username);
 	}
 	
 }

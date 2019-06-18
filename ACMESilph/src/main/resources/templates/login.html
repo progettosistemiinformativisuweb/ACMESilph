@@ -33,14 +33,14 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form th:action="@{/loginAttempt}" method="post" th:object="${funzionario}" class="login100-form validate-form">
+				<form th:action="@{/login}" method="post"  class="login100-form validate-form">
 					<span class="login100-form-title p-b-26">
 						Welcome
 					</span>
 					
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						<input class="input100" type="text" th:field="*{email}">
+						<input class="input100" type="text" name="username">
 						<span class="focus-input100" data-placeholder="email"></span>
 					</div>
 
@@ -48,7 +48,7 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						<input class="input100" type="password" th:field="*{password}">
+						<input class="input100" type="password" name="password">
 						<span class="focus-input100" data-placeholder="password"></span>
 					</div>
 
