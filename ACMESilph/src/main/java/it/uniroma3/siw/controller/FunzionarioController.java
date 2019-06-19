@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,8 +13,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import it.uniroma3.siw.model.Fotografo;
+import it.uniroma3.siw.model.SorgenteImmagine;
 import it.uniroma3.siw.service.AlbumServices;
 import it.uniroma3.siw.service.FotografoServices;
 import it.uniroma3.siw.service.RichiestaUtilizzoServices;
@@ -60,11 +64,20 @@ public class FunzionarioController {
 	}
 
 	@RequestMapping(value = "/addFotografo", method = RequestMethod.POST)
-	public String  salvaNuovoFotografo(@Valid @ModelAttribute ("fotografo") Fotografo fotografo, Model model, BindingResult bindingResult) {
+	public String  salvaNuovoFotografo(@Valid @ModelAttribute ("fotografo") Fotografo fotografo, @RequestParam("foto") MultipartFile file, Model model, BindingResult bindingResult) {
 
 		this.fotografoValidator.validate(fotografo, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
+			SorgenteImmagine sorgenteImmagine;
+
+			try {
+				sorgenteImmagine = new SorgenteImmagine(file.getBytes());
+				fotografo.setSorgenteAvatar(sorgenteImmagine);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
 			this.fotografoServices.add(fotografo);
 			List<Fotografo> fotografi= (List<Fotografo>) this.fotografoServices.getAllFotografi();
 			int dimension= fotografi.size()/3;
@@ -82,6 +95,8 @@ public class FunzionarioController {
 		
 	}
 
+	
+	
 
 
 

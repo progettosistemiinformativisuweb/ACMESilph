@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div>
-		<form th:action="@{/addFotografo}" th:method="POST" th:object="${fotografo}">
+		<form th:action="@{/addFotografo}" th:method="POST" enctype = "multipart/form-data" th:object="${fotografo}">
 
 			<table>
 				<tr>
@@ -30,8 +30,7 @@
 				
 				<tr>
 					<td>Foto del Profilo</td>
-						<td><input type="file" ></td>
-					<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+						<td><input type="file" name ="foto" accept="image/*" ></td>
 				</tr>
 				<tr>
 					<td>
