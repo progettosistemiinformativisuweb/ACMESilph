@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <head>
-<title>Galleria - SILPH WEB</title>
+<title>${album.titolo}</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" th:href="@{/css/assetsGallery/css/main.css}" />
@@ -33,19 +33,13 @@
 				<!-- Photo Galleries -->
 				<div class="gallery">
 
-
 					<div class="content">
-
 						<div th:each="photo : ${photos}" class="media all people">
 							<a th:href="@{'getFoto/' + ${photo.id}}"><img
 								th:src="@{'getFoto/' + ${photo.id}}" alt=""
 								th:title="'Titolo:  ' + ${photo.titolo}+ '  ' + 'Prezzo: '+ ${photo.prezzo}+ ' euro'" /></a>
 								
 						</div>
-
-
-
-
 					</div>
 
 
