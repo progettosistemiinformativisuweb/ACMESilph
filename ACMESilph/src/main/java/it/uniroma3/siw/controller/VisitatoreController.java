@@ -123,6 +123,7 @@ public class VisitatoreController {
 		Album album = this.albumServices.getAlbumById(id); 
     	model.addAttribute("album",album ); 
     	model.addAttribute("photos",album.getFoto()); 
+    	model.addAttribute("richiestaUtilizzo", new RichiestaUtilizzo());
     	return "album.html"; 
     }
 	
@@ -166,6 +167,8 @@ public class VisitatoreController {
 		response.getOutputStream().write(fotografo.getSorgenteAvatar().getSorgente());
 	    response.getOutputStream().close();
 	}
+	
+	
 
 	
 	

@@ -14,8 +14,7 @@
 		<nav id="nav">
 			<ul>
 				<li><a th:href="@{/}"><span class="icon fa-home"></span></a></li>
-				<li><a th:href="@{/getGalleria}" class="active"><span
-						class="icon fa-camera-retro"></span></a></li>
+				
 			</ul>
 		</nav>
 
@@ -23,9 +22,7 @@
 		<section id="main">
 
 			<!-- Header -->
-			<header id="header">
-
-			</header>
+			<header id="header"> </header>
 
 			<!-- Gallery -->
 			<section id="galleries">
@@ -37,10 +34,10 @@
 					<div class="content">
 
 						<div th:each="photo : ${photos}" class="media all people">
-							<a th:href="@{'getFoto/' + ${photo.id}}"><img
-								th:src="@{'getFoto/' + ${photo.id}}" alt=""
+							<a th:href="@{'/getFoto/' + ${photo.id}}"><img
+								th:src="@{'/getFoto/' + ${photo.id}}" alt=""
 								th:title="'Titolo:  ' + ${photo.titolo}+ '  ' + 'Prezzo: '+ ${photo.prezzo}+ ' euro'" /></a>
-								
+
 						</div>
 
 
@@ -68,42 +65,45 @@
 								class="label">Instagram</span></a></li>
 					</ul>
 				</div>
-				
-				
+
+
 				<!-- Form -->
-								<div class="column">
-									<h3>Ordina Foto</h3>
-									<form th:action="@{/processaRichiestaUtilizzo}" method="post" th:object="${richiestaUtilizzo}">
-										<div class="field half first">
-											<label for="name">Nome</label>
-											<input name="name" id="name" type="text" placeholder="Name" th:field = "*{nome}">
-										</div>
-										<div class="field half first">
-											<label for="lastname">Cognome</label>
-											<input name="lastname" id="lastname" type="text" placeholder="Lastname" th:field = "*{cognome}">
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input name="email" id="email" type="text" placeholder="Email" th:field = "*{email}">
-										</div>
-										<div class="field">
-											<label for="message">Note</label>
-											<textarea name="message" id="message" rows="4" placeholder="Evenutali Note"></textarea>
-										</div>
-										<ul class="actions">
-											<li><input value="Invia Richiesta" class="button" type="submit"></li>
-										</ul>
-									</form>
-								</div>
+				<div class="column">
+					<h3>Ordina Foto</h3>
+					<form th:action="@{/processaRichiestaUtilizzo}" method="post"
+						th:object="${richiestaUtilizzo}">
+						<div class="field half first">
+							<label for="name">Nome</label> <input name="name" id="name"
+								type="text" placeholder="Name" th:field="*{nome}">
+						</div>
+						<div class="field half first">
+							<label for="lastname">Cognome</label> <input name="lastname"
+								id="lastname" type="text" placeholder="Lastname"
+								th:field="*{cognome}">
+						</div>
+						<div class="field half">
+							<label for="email">Email</label> <input name="email" id="email"
+								type="text" placeholder="Email" th:field="*{email}">
+						</div>
+						<div class="field">
+							<label for="message">Note</label>
+							<textarea name="message" id="message" rows="4"
+								placeholder="Evenutali Note"></textarea>
+						</div>
+						<ul class="actions">
+							<li><input value="Invia Richiesta" class="button"
+								type="submit"></li>
+						</ul>
+					</form>
+				</div>
 
 
 			</section>
 
 			<!-- Footer -->
 			<footer id="footer">
-				<div class="copyright">
-					&copy; Realizzato da Adriano Vlad e Matteo Brandetti
-				</div>
+				<div class="copyright">&copy; Realizzato da Adriano Vlad e
+					Matteo Brandetti</div>
 			</footer>
 		</section>
 	</div>

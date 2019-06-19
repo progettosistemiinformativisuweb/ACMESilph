@@ -12,8 +12,7 @@
 	<nav id="nav">
 		<ul>
 			<li><a th:href="@{/}"><span class="icon fa-home"></span></a></li>
-			<li><a th:href="@{/elencoAttivita}" class="active"><span
-					class="icon fa-camera-retro"></span></a></li>
+			
 		</ul>
 	</nav>
 
@@ -26,21 +25,8 @@
 			<span class="avatar"><img
 				src="images/fotografiImages/avatar.jpg" alt="" /></span>
 			<h1>
-				Gentile <strong>Funziario</strong> <br />
-				  Cosa intendi fare?.
+				Gentile <strong>Funziario</strong> <br /> Cosa intendi fare?.
 			</h1>
-			<ul class="icons">
-				<li><a href="#" class="icon style2 fa-twitter"><span
-						class="label">Twitter</span></a></li>
-				<li><a href="#" class="icon style2 fa-facebook"><span
-						class="label">Facebook</span></a></li>
-				<li><a href="#" class="icon style2 fa-instagram"><span
-						class="label">Instagram</span></a></li>
-				<li><a href="#" class="icon style2 fa-500px"><span
-						class="label">500px</span></a></li>
-				<li><a href="#" class="icon style2 fa-envelope-o"><span
-						class="label">Email</span></a></li>
-			</ul>
 		</header>
 
 		<!-- Main -->
@@ -48,30 +34,19 @@
 
 			<!-- Thumbnails -->
 			<section class="thumbnails">
+				<div></div>
 				<div>
 
-					<a th:href="@{/nuovoFotografo}"> Inserisci nuovo fotografo</a>
+					<a th:href="@{/nuovoFotografo}"><h3>Inserisci nuovo
+							fotografo</h3></a> <a th:href="@{/}"><h3>Home</h3></a> <a
+						th:href="@{/inserisciAlbum}"><h3>Inserisci nuovo album</h3></a> <a
+						th:href="@{/visualizzaRichiesteDiUtilizzo}"><h3>
+							Visualizza richieste di utilizzo</h3></a>
 
 				</div>
-				<div>
-					<a th:href="@{/}"> Home</a>
+				<div></div>
 
-
-
-				</div>
-				<div>
-					<a th:href="@{/inserisciAlbum}">Inserisci nuovo album</a>
-
-
-				</div>
-
-				<div>
-					<a th:href="@{/visualizzaRichiesteDiUtilizzo}"> Visualizza
-						richieste di utilizzo</a>
-
-				</div>
 			</section>
-
 		</section>
 
 		<!-- Footer -->

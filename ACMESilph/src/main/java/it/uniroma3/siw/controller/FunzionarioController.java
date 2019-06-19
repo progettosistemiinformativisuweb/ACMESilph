@@ -71,9 +71,7 @@ public class FunzionarioController {
 	public String  salvaNuovoAlbum(@Valid @ModelAttribute ("album") Album album, @RequestParam("photos") MultipartFile[] files, Model model, BindingResult bindingResult) {
 
 		Fotografo fotografo=album.getFotografo();
-		fotografo.getAlbum().add(album);
 		
-		System.out.println(fotografo.getNome());
 		
 		this.albumValidator.validate(album, bindingResult);
 
@@ -96,6 +94,7 @@ public class FunzionarioController {
 				}
 				
 				this.albumServices.add(album);
+				fotografo.getAlbum().add(album);
 
 			} catch (IOException e) {
 				e.printStackTrace();
