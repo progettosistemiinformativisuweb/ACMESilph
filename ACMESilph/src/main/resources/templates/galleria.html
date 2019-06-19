@@ -14,40 +14,78 @@
 		<nav id="nav">
 			<ul>
 				<li><a th:href="@{/}"><span class="icon fa-home"></span></a></li>
-				
+
 			</ul>
 		</nav>
 
 		<!-- Main -->
 		<section id="main">
 
-			<!-- Header -->
-			<header id="header"> </header>
 
-			<!-- Gallery -->
-			<section id="galleries">
+			<!-- Form -->
 
-				<!-- Photo Galleries -->
-				<div class="gallery">
+			<h3>Ordina Foto</h3>
+			<form th:action="@{/processaRichiestaUtilizzo}" method="post"
+				th:object="${richiestaUtilizzo}">
+				<div class="field half first">
+					<label for="name">Nome</label> <input name="name" id="name"
+						type="text" placeholder="Name" th:field="*{nome}">
+				</div>
+				<div class="field half first">
+					<label for="lastname">Cognome</label> <input name="lastname"
+						id="lastname" type="text" placeholder="Lastname"
+						th:field="*{cognome}">
+				</div>
+				<div class="field half">
+					<label for="email">Email</label> <input name="email" id="email"
+						type="text" placeholder="Email" th:field="*{email}">
+				</div>
+				<div class="field">
+					<label for="message">Note</label>
+					<textarea name="message" id="message" rows="4"
+						placeholder="Evenutali Note"></textarea>
+				</div>
+				<ul class="actions">
+					<li><input value="Invia Richiesta" class="button"
+						type="submit"></li>
+				</ul>
+
+				<!-- Gallery -->
+				<section id="galleries">
+
+					<!-- Photo Galleries -->
+					<div class="gallery">
 
 
-					<div class="content">
+						<div class="content">
 
-						<div th:each="photo : ${photos}" class="media all people">
-							<a th:href="@{'/getFoto/' + ${photo.id}}"><img
-								th:src="@{'/getFoto/' + ${photo.id}}" alt=""
-								th:title="'Titolo:  ' + ${photo.titolo}+ '  ' + 'Prezzo: '+ ${photo.prezzo}+ ' euro'" /></a>
+							<div th:each="photo : ${photos}" class="media all people">
+
+
+								<a th:href="@{'/getFoto/' + ${photo.id}}"><img
+									th:src="@{'/getFoto/' + ${photo.id}}" alt=""
+									th:title="${photo.titolo}" /> </a>
+
+								<table>
+									<tr>
+										<td><h3 th:text="'Compra per ' + ${photo.prezzo} +'$'"></h3></td>
+										<td><button name="dotnet">+</button></td>
+									</tr>
+								</table>
+							</div>
+
+
+
 
 						</div>
 
 
-
-
 					</div>
+				</section>
+			</form>
 
 
-				</div>
-			</section>
+
 
 			<!-- Contact -->
 			<section id="contact">
@@ -67,35 +105,7 @@
 				</div>
 
 
-				<!-- Form -->
-				<div class="column">
-					<h3>Ordina Foto</h3>
-					<form th:action="@{/processaRichiestaUtilizzo}" method="post"
-						th:object="${richiestaUtilizzo}">
-						<div class="field half first">
-							<label for="name">Nome</label> <input name="name" id="name"
-								type="text" placeholder="Name" th:field="*{nome}">
-						</div>
-						<div class="field half first">
-							<label for="lastname">Cognome</label> <input name="lastname"
-								id="lastname" type="text" placeholder="Lastname"
-								th:field="*{cognome}">
-						</div>
-						<div class="field half">
-							<label for="email">Email</label> <input name="email" id="email"
-								type="text" placeholder="Email" th:field="*{email}">
-						</div>
-						<div class="field">
-							<label for="message">Note</label>
-							<textarea name="message" id="message" rows="4"
-								placeholder="Evenutali Note"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input value="Invia Richiesta" class="button"
-								type="submit"></li>
-						</ul>
-					</form>
-				</div>
+
 
 
 			</section>
