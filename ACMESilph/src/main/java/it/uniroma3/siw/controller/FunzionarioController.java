@@ -100,6 +100,7 @@ public class FunzionarioController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
+			model.addAttribute("albums", this.albumServices.getAlbumsByFotografoId(fotografo.getId())); 
 			model.addAttribute("fotografo", fotografo);
 			return "fotografo.html";
 		}
