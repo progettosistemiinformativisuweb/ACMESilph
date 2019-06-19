@@ -73,6 +73,8 @@ public class FunzionarioController {
 		Fotografo fotografo=album.getFotografo();
 		fotografo.getAlbum().add(album);
 		
+		System.out.println(fotografo.getNome());
+		
 		this.albumValidator.validate(album, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
@@ -84,13 +86,16 @@ public class FunzionarioController {
 				for(MultipartFile file: files) {
 					sorgenteImmagine = new SorgenteImmagine(file.getBytes());
 					Foto foto=new Foto();
+					foto.setPrezzo(10L);
 					foto.setFotografo(fotografo);
 					foto.setSorgenteImmagine(sorgenteImmagine);
 					foto.setTitolo(file.getOriginalFilename());
 					
-					album.addFoto(foto, 10L);
+					album.addFoto(foto);
 					
 				}
+				
+				this.albumServices.add(album);
 
 			} catch (IOException e) {
 				e.printStackTrace();

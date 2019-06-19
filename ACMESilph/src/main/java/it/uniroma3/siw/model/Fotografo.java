@@ -59,7 +59,7 @@ public class Fotografo {
 
 	public Fotografo() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.album=new ArrayList<Album>();
 	}
 
 

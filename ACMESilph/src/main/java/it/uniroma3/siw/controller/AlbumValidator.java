@@ -20,8 +20,6 @@ public class AlbumValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "annoPubblicazione", "required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fotografo", "required");
 
 
 	}

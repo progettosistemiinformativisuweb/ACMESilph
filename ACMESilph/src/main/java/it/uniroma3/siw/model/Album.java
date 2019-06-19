@@ -39,16 +39,16 @@ public class Album {
 	}
 	
 	public Album() {
+		this.foto=new ArrayList<Foto>();
 	}
 	
 	public void aggiungiFoto(String titolo, Long prezzo) {
 		this.foto.add(new Foto(titolo,prezzo, this.fotografo));
 	}
 	
-	public void addFoto(Foto foto, Long prezzo) {
+	public void addFoto(Foto foto) {
 		this.foto.add(foto);
 	}
-	
 	
 	
 
