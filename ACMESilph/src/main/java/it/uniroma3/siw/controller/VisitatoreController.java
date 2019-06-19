@@ -2,6 +2,7 @@ package it.uniroma3.siw.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -148,6 +149,7 @@ public class VisitatoreController {
 		this.richiestaUtilizzoValidator.validate(richiesta,result);
 		if (!result.hasErrors()) {
 			richiesta.setData(LocalDate.now());
+			richiesta.setTime(LocalTime.now());
 			this.richiestaUtilizzoServices.add(richiesta);
 			
 		}

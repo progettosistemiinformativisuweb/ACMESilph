@@ -13,11 +13,19 @@
 			th:text="${richiestaUtilizzo.nome}"> Nome: </span> <span
 			th:text="${richiestaUtilizzo.cognome}"> Cognome: </span> <span
 			th:text="${richiestaUtilizzo.data}"> Data: </span> <span
-			th:text="${richiestaUtilizzo.email}"> Email: </span></li>
+			th:text="${richiestaUtilizzo.email}"> Email: </span>
+			 <span
+			th:text="${richiestaUtilizzo.time}"> Data: </span></li>
+			
+			
+			
+		 <li><a th:href="@{/elencoAttivita}"> Back</a> </li>
 
 
 
 	</ul>
+	
+	
 
 </body>
 </html>

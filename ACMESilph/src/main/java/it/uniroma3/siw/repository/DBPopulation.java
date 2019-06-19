@@ -2,6 +2,7 @@ package it.uniroma3.siw.repository;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -150,7 +151,10 @@ public class DBPopulation implements ApplicationRunner{
 	}
 	private void addAllRichiesteUtilizzo() {
 		RichiestaUtilizzo ru = new RichiestaUtilizzo(LocalDate.now(), "Matteo", "Cognome", "matteo.brandetti@gmail.com");
+		ru.setTime(LocalTime.now());
 		RichiestaUtilizzo ru2 = new RichiestaUtilizzo(LocalDate.now(), "Adriano", "Vlad", "adriano.vlad@gmail.com");
+		ru2.setTime(LocalTime.now());
+
 
 		this.richiestaUtilizzoRepository.save(ru);
 		this.richiestaUtilizzoRepository.save(ru2);

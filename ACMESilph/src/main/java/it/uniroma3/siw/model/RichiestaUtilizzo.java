@@ -1,6 +1,7 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.*;
@@ -8,11 +9,15 @@ import javax.persistence.*;
 @Entity
 public class RichiestaUtilizzo {
 	
-	@Id()
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id; 
 	@Column
 	private LocalDate data;
+	
+	
+	@Column
+	private LocalTime time;
 	@Column
 
 	private String nome; 
@@ -142,6 +147,16 @@ public class RichiestaUtilizzo {
 
 	public void setNota(String nota) {
 		this.nota = nota;
+	}
+
+
+	public LocalTime getTime() {
+		return time;
+	}
+
+
+	public void setTime(LocalTime time) {
+		this.time = time;
 	}
 	
 	
