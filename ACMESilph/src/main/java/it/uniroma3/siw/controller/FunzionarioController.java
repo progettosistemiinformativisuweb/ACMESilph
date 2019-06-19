@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.model.Album;
+import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Fotografo;
 import it.uniroma3.siw.model.SorgenteImmagine;
 import it.uniroma3.siw.service.AlbumServices;
@@ -33,6 +35,9 @@ public class FunzionarioController {
 
 	@Autowired
 	private FotografoValidator fotografoValidator;
+	
+	@Autowired
+	private AlbumValidator albumValidator;
 
 
 
@@ -53,8 +58,53 @@ public class FunzionarioController {
 
 	@RequestMapping(value = "/inserisciAlbum", method = RequestMethod.GET)
 	public String inserisciNuovoAlbum(Model model) {
+		Album album=new Album();
+		List<Fotografo> fotografi= this.fotografoServices.getAllFotografiAsList();
+		model.addAttribute("album", album);
+		model.addAttribute("fotografi", fotografi);
+		
 		return "nuovoAlbum.html";
 	}
+	
+	
+	@RequestMapping(value = "/addAlbum", method = RequestMethod.POST)
+	public String  salvaNuovoAlbum(@Valid @ModelAttribute ("album") Album album, @RequestParam("photos") MultipartFile[] files, Model model, BindingResult bindingResult) {
+
+		Fotografo fotografo=album.getFotografo();
+		fotografo.getAlbum().add(album);
+		
+		this.albumValidator.validate(album, bindingResult);
+
+		if(!bindingResult.hasErrors()) {
+			SorgenteImmagine sorgenteImmagine;
+
+			try {
+				
+				
+				for(MultipartFile file: files) {
+					sorgenteImmagine = new SorgenteImmagine(file.getBytes());
+					Foto foto=new Foto();
+					foto.setFotografo(fotografo);
+					foto.setSorgenteImmagine(sorgenteImmagine);
+					foto.setTitolo(file.getOriginalFilename());
+					
+					album.addFoto(foto, 10L);
+					
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+			model.addAttribute("fotografo", fotografo);
+			return "fotografo.html";
+		}
+		else {
+			return "nuovoAlbum.html";
+		}
+		
+	}
+	
+	
 
 	@RequestMapping(value = "/nuovoFotografo", method = RequestMethod.GET)
 	public String  inserisciNuovoFotografo(Model model) {

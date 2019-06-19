@@ -45,6 +45,11 @@ public class Album {
 		this.foto.add(new Foto(titolo,prezzo, this.fotografo));
 	}
 	
+	public void addFoto(Foto foto, Long prezzo) {
+		this.foto.add(foto);
+	}
+	
+	
 	
 
 	public String getTitolo() {
@@ -87,7 +92,6 @@ public class Album {
 	public void setFoto(List<Foto> foto) {
 		this.foto = foto;
 	}
-
 	
 	
 	
