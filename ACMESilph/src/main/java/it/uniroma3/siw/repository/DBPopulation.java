@@ -150,7 +150,7 @@ public class DBPopulation implements ApplicationRunner{
 		
 	}
 	private void addAllRichiesteUtilizzo() {
-		RichiestaUtilizzo ru = new RichiestaUtilizzo(LocalDate.now(), "Matteo", "Cognome", "matteo.brandetti@gmail.com");
+		RichiestaUtilizzo ru = new RichiestaUtilizzo(LocalDate.now(), "Matteo", "Brandetti", "matteo.brandetti@gmail.com");
 		ru.setTime(LocalTime.now());
 		RichiestaUtilizzo ru2 = new RichiestaUtilizzo(LocalDate.now(), "Adriano", "Vlad", "adriano.vlad@gmail.com");
 		ru2.setTime(LocalTime.now());
