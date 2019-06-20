@@ -2,6 +2,7 @@ package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -14,29 +15,21 @@ public class RichiestaUtilizzo {
 	private Long id; 
 	@Column
 	private LocalDate data;
-	
-	
 	@Column
 	private LocalTime time;
 	@Column
-
 	private String nome; 
 	@Column
-
 	private String cognome; 
 	@Column
-
 	private String email; 
-
-	
 	@Column
-
 	private String nota; 
+	
 
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Foto> foto; 
-	
 	
 
 	
@@ -53,19 +46,12 @@ public class RichiestaUtilizzo {
 
 	public RichiestaUtilizzo() {
 		super();
+		this.foto = new ArrayList<>();
+		
 	}
 
 
-	
 
-
-	public Long getTotale() {
-		long somma = 0; 
-		for(Foto f: this.foto) {
-			somma += f.getPrezzo(); 
-		}
-		return somma; 
-	}
 
 
 	public LocalDate getData() {

@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.model.Foto;
@@ -97,6 +96,7 @@ public class VisitatoreController {
 	
 	
 	
+	
 	@RequestMapping(value="/fotografi", method=RequestMethod.GET)
 	public String getFotografi(Model model) {
 		List<Fotografo> fotografi= (List<Fotografo>) this.fotografoServices.getAllFotografi();
@@ -145,18 +145,21 @@ public class VisitatoreController {
 	}
 	
 	
-	@RequestMapping(value="/processaRichiestaUtilizzo", method=RequestMethod.POST)
-	public String processaRichiesta(@ModelAttribute("richiestaUtilizzo") RichiestaUtilizzo richiesta,Model model,  BindingResult result) {
-		this.richiestaUtilizzoValidator.validate(richiesta,result);
+	@RequestMapping(value = "/processaRichiestaUtilizzo", method = RequestMethod.POST)
+	public String processaRichiesta(@ModelAttribute("richiestaUtilizzo") RichiestaUtilizzo richiesta, Model model,
+			BindingResult result, @RequestParam List<String> idsFoto) {
+		this.richiestaUtilizzoValidator.validate(richiesta, result);
 		if (!result.hasErrors()) {
 			richiesta.setData(LocalDate.now());
 			richiesta.setTime(LocalTime.now());
+			idsFoto.stream().map(id -> new Long(id))
+					.forEach(id -> richiesta.aggiungiFoto(this.fotoServices.getFotoById(id)));
 			this.richiestaUtilizzoServices.add(richiesta);
-			
+
 		}
-		
+
 		model.addAttribute("photos", this.fotoServices.getAllFotoAsList());
-		
+
 		return "galleria.html";
 	}
 	

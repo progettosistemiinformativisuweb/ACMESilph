@@ -20,12 +20,16 @@ public class RichiestaUtilizzoServices {
 		this.richiestaUtilizzoRepository.save(richiesta);
 	}
 
-	public RichiestaUtilizzo getRichiestaByIdWithClienteAndFoto(Long id) {
+	public RichiestaUtilizzo getRichiestaByIdWithFoto(Long id) {
 		return this.richiestaUtilizzoRepository.findByIdWithFoto(id);
 	}
 
 	public Collection<RichiestaUtilizzo> getAllRichieste() {
 		return this.richiestaUtilizzoRepository.findAll();
+	}
+
+	public RichiestaUtilizzo getRichiestaById(Long id) {
+		return this.richiestaUtilizzoRepository.findById(id).get(); 
 	}
 
 }

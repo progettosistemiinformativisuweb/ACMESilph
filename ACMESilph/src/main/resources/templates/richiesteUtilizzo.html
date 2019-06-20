@@ -15,7 +15,22 @@
 			th:text="${richiestaUtilizzo.data}">      Data: </span> <span
 			th:text="${richiestaUtilizzo.email}">      Email: </span>
 			 <span
-			th:text="${richiestaUtilizzo.time}">       Ora: </span></li>
+			th:text="${richiestaUtilizzo.time}">       Ora: </span>
+			 <span
+			 
+			th:text="${richiestaUtilizzo.nota}">       Nota: </span>
+			
+			
+			
+			
+			<a th:href="@{'/fotoRichieste/' + ${richiestaUtilizzo.id}}"><span>Foto acquistate </span></a>
+			
+			
+			
+			
+			
+			</li>
+			
 			
 			
 			

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <head>
-<title th:text="${album.titolo}"></title>
+<title th:text="${richiesta.email}"></title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" th:href="@{/css/assetsGallery/css/main.css}" />
@@ -22,69 +22,40 @@
 		<section id="main">
 
 
-			<!-- Form -->
 
-			<h3>Ordina Foto</h3>
-			<form th:action="@{/processaRichiestaUtilizzo}" method="post"
-				th:object="${richiestaUtilizzo}">
-				<div class="field half first">
-					<label for="name">Nome</label> <input name="name" id="name"
-						type="text" placeholder="Name" th:field="*{nome}">
-				</div>
-				<div class="field half first">
-					<label for="lastname">Cognome</label> <input name="lastname"
-						id="lastname" type="text" placeholder="Lastname"
-						th:field="*{cognome}">
-				</div>
-				<div class="field half">
-					<label for="email">Email</label> <input name="email" id="email"
-						type="text" placeholder="Email" th:field="*{email}">
-				</div>
-				<div class="field">
-					<label for="message">Note</label>
-					<textarea name="message" id="message" rows="4"
-						placeholder="Evenutali Note" th:field="*{nota}"></textarea>
-				</div>
-				<ul class="actions">
-					<li>
-						<button type="submit">Invio</button>
-					</li>
-				</ul>
-
-				<!-- Gallery -->
-				<section id="galleries">
-
-					<!-- Photo Galleries -->
-					<div class="gallery">
+          			<h3  th:text="${richiesta.email} +' ha acquistato le seguenti foto'"></h3>
+          
 
 
-						<div class="content">
-
-							<div th:each="photo : ${photos}" class="media all people">
 
 
-								<a th:href="@{'/getFoto/' + ${photo.id}}"><img
-									th:src="@{'/getFoto/' + ${photo.id}}" alt=""
-									th:title="${photo.titolo}" /> </a>
+			<!-- Gallery -->
+			<section id="galleries">
 
-								<table>
-									<tr>
-										<td><h3 th:text="'Compra per ' + ${photo.prezzo} +'€'"></h3></td>
-										<td><input type="checkbox" title="Acquista"
-											name="idsFoto" th:value="${photo.id}"></td>
-									</tr>
-								</table>
-							</div>
+				<!-- Photo Galleries -->
+				<div class="gallery">
 
 
+					<div class="content">
+
+						<div th:each="photo : ${photos}" class="media all people">
+
+
+							<a th:href="@{'/getFoto/' + ${photo.id}}"><img
+								th:src="@{'/getFoto/' + ${photo.id}}" alt=""
+								th:title="${photo.titolo}" /> </a>
 
 
 						</div>
 
 
+
+
 					</div>
-				</section>
-			</form>
+
+
+				</div>
+			</section>
 
 
 

@@ -6,6 +6,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" th:href="@{/css/assetsGallery/css/main.css}" />
+
 </head>
 <body>
 	<div class="page-wrap">
@@ -43,11 +44,12 @@
 				<div class="field">
 					<label for="message">Note</label>
 					<textarea name="message" id="message" rows="4"
-						placeholder="Evenutali Note"></textarea>
+						placeholder="Evenutali Note" th:field="*{nota}"></textarea>
 				</div>
 				<ul class="actions">
-					<li><input value="Invia Richiesta" class="button"
-						type="submit"></li>
+					<li>
+						<button type="submit">Invio</button>
+					</li>
 				</ul>
 
 				<!-- Gallery -->
@@ -68,8 +70,9 @@
 
 								<table>
 									<tr>
-										<td><h3 th:text="'Compra per ' + ${photo.prezzo} +'$'"></h3></td>
-										<td><button name="dotnet">+</button></td>
+										<td><h3 th:text="'Compra per ' + ${photo.prezzo} +'€'"></h3></td>
+										<td><input type="checkbox" title="Acquista"
+											name="idsFoto" th:value="${photo.id}"></td>
 									</tr>
 								</table>
 							</div>

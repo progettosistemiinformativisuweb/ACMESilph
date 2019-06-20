@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,7 +42,7 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 
 
 				// everyone (authenticated or not) can access the home page
-				.antMatchers(HttpMethod.GET, "/", "/index", "/galleriaFoto", "/getFoto/{id}", "/fotografi",
+				.antMatchers("/processaRichiestaUtilizzo", "/", "/index", "/galleriaFoto", "/getFoto/{id}", "/fotografi",
 						"/fotografo/{id}", "/getFotografoAvatar/{id}")
 				.permitAll()
 

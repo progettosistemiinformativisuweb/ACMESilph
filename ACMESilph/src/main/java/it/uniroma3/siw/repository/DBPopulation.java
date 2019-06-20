@@ -3,7 +3,6 @@ package it.uniroma3.siw.repository;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -35,12 +34,12 @@ public class DBPopulation implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		this.removeAllPics();
+		this.addAllPictures();
 		this.removeAllFunzionari();
 		this.addAllFunzionari();
 		this.removeAllFotografi();
 		this.addAllFotografi();
-		this.removeAllPics();
-		this.addAllPictures();
 		this.removeAllRichiesteUtlizzo();
 		this.addAllRichiesteUtilizzo();
 		

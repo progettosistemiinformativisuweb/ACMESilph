@@ -1,9 +1,8 @@
 package it.uniroma3.siw.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import it.uniroma3.siw.model.Album;
 import it.uniroma3.siw.model.Foto;
 import it.uniroma3.siw.model.Fotografo;
+import it.uniroma3.siw.model.RichiestaUtilizzo;
 import it.uniroma3.siw.model.SorgenteImmagine;
 import it.uniroma3.siw.service.AlbumServices;
 import it.uniroma3.siw.service.FotografoServices;
@@ -47,11 +48,10 @@ public class FunzionarioController {
 	private RichiestaUtilizzoServices richiestaUtilizzoServices;
 
 
-
 	@RequestMapping(value = "/visualizzaRichiesteDiUtilizzo", method = RequestMethod.GET)
 	public String getRichiesteUtilizzo(Model model) {
-		model.addAttribute("richiesteUtilizzo",
-				this.richiestaUtilizzoServices.getAllRichieste().stream().collect(Collectors.toList()));
+		List<RichiestaUtilizzo> richieste = (List<RichiestaUtilizzo>) this.richiestaUtilizzoServices.getAllRichieste();
+		model.addAttribute("richiesteUtilizzo", richieste);
 		return "richiesteUtilizzo.html";
 	}
 
@@ -149,13 +149,28 @@ public class FunzionarioController {
 		}
 		
 	}
+	
+	@RequestMapping(value = "/fotoRichieste/{id}", method = RequestMethod.GET)
+	public String getFotoRichieste(@PathVariable("id") Long id, Model model) {
+		RichiestaUtilizzo ru = this.richiestaUtilizzoServices.getRichiestaByIdWithFoto(id);
+		if(ru == null) {
+			ru = this.richiestaUtilizzoServices.getRichiestaById(id); 
+			model.addAttribute("photos", new ArrayList<Foto>());
+
+			
+		}
+		else {
+			model.addAttribute("photos", ru.getFoto());
+
+			
+		}
+		model.addAttribute("richiesta", ru);
+
+
+		return "fotoRichieste.html";
+	}
 
 	
-	
-
-
-
-
 
 
 }
