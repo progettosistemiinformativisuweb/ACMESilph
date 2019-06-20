@@ -16,13 +16,13 @@
 			<table>
 				<tr>
 					<td>Titolo:</td>
-					<td><input type="text" th:field="*{titolo}"></td>
+					<td><input type="text" th:field="*{titolo}" style="color:black"></td>
 					<td th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></td>
 				</tr>
 				<tr>
 					<td>Seleziona il fotografo autore</td>
-					<td><select th:field="*{fotografo}">
-							<option th:each="fot: ${fotografi}" th:value="${fot.id}"  th:text="${fot.nome} +' '+ ${fot.cognome}">placeHolder</option>
+					<td><select th:field="*{fotografo}"  style="color:black">
+							<option th:each="fot: ${fotografi}" th:value="${fot.id}"  th:text="${fot.nome} +' '+ ${fot.cognome}" style="color:black">placeHolder</option>
 					</select></td>
 
 				</tr>
@@ -30,7 +30,7 @@
 
 				<tr>
 					<td>Carica le foto</td>
-					<td><input type="file" name="photos" accept="image/*" multiple></td>
+					<td><input type="file" name="photos" accept="image/*" style="color:white" multiple></td>
 				</tr>
 				<tr>
 					<td>

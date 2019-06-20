@@ -92,7 +92,15 @@
 
 /* Type */
 
-	body, input, select, textarea {
+	input, select, textarea {
+		color: black;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 14pt;
+		font-weight: 300;
+		line-height: 1.65;
+	}
+
+	body{
 		color: rgba(255, 255, 255, 0.75);
 		font-family: "Source Sans Pro", sans-serif;
 		font-size: 14pt;
@@ -364,7 +372,7 @@
 		border-radius: 4px;
 		border: none;
 		border: solid 1px rgba(144, 144, 144, 0.25);
-		color: inherit;
+		color: black;
 		display: block;
 		outline: 0;
 		padding: 0 1em;
@@ -1403,4 +1411,8 @@
 				padding: 3em 0 1em 0;
 			}
 
+		}
+
+		select.form-control {
+  			color: black;
 		}
