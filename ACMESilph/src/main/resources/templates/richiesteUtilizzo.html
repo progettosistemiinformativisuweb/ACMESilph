@@ -4,41 +4,43 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Impiegati</title>
+<link rel="stylesheet" th:href="@{/css/assetsFotografi/css/main.css}" />
+
 </head>
 <body>
 
-    <ul>
+    <table>
 
-		<li th:each="richiestaUtilizzo: ${richiesteUtilizzo}"><span
-			th:text="${richiestaUtilizzo.nome}"> Nome: </span> <span
-			th:text="${richiestaUtilizzo.cognome}">      Cognome: </span> <span
-			th:text="${richiestaUtilizzo.data}">      Data: </span> <span
-			th:text="${richiestaUtilizzo.email}">      Email: </span>
-			 <span
-			th:text="${richiestaUtilizzo.time}">       Ora: </span>
-			 <span
+		<tr th:each="richiestaUtilizzo: ${richiesteUtilizzo}"><td
+			th:text="${richiestaUtilizzo.nome}"> Nome: </td> <td
+			th:text="${richiestaUtilizzo.cognome}">      Cognome: </td> <td
+			th:text="${richiestaUtilizzo.data}">      Data: </td> <td
+			th:text="${richiestaUtilizzo.email}">      Email: </td>
+			 <td
+			th:text="${richiestaUtilizzo.time}">       Ora: </td>
+			 <td
 			 
-			th:text="${richiestaUtilizzo.nota}">       Nota: </span>
+			th:text="${richiestaUtilizzo.nota}">       Nota: </td>
+			
+			
+			<td>
+			
+			<a th:href="@{'/fotoRichieste/' + ${richiestaUtilizzo.id}}">Foto acquistate </a>
 			
 			
 			
 			
-			<a th:href="@{'/fotoRichieste/' + ${richiestaUtilizzo.id}}"><span>Foto acquistate </span></a>
+			
+			</td>
 			
 			
 			
 			
-			
-			</li>
-			
-			
-			
-			
-		 <li><a th:href="@{/elencoAttivita}"> Back</a> </li>
+		 <tr> <td><a th:href="@{/elencoAttivita}"> Back</a>  </td></tr>
 
 
 
-	</ul>
+	</table>
 	
 	
 

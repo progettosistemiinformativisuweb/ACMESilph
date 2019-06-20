@@ -34,14 +34,15 @@ public class DBPopulation implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
+		this.removeAllRichiesteUtlizzo();
+		this.addAllRichiesteUtilizzo();
 		this.removeAllPics();
 		this.addAllPictures();
 		this.removeAllFunzionari();
 		this.addAllFunzionari();
 		this.removeAllFotografi();
 		this.addAllFotografi();
-		this.removeAllRichiesteUtlizzo();
-		this.addAllRichiesteUtilizzo();
+		
 		
 	}
 	
@@ -102,7 +103,7 @@ public class DBPopulation implements ApplicationRunner{
 		
 		for(int i=1; i<3; i++) {
 			String filename = "galleria1" + (Integer.valueOf(i)).toString() + ".jpg";
-			this.addPicture(filename, filename, 5L);
+			this.addPicture(filename, filename, 5L+new Long(i));
 		}
 		
 	}

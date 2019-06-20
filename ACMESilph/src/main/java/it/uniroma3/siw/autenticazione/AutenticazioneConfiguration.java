@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * The AuthConfiguration is a Spring Security Configuration.
@@ -65,7 +66,10 @@ public class AutenticazioneConfiguration extends WebSecurityConfigurerAdapter {
 				// handle the POST automatically)
 
 				// logout paragraph: we are going to define here how to logout
-				.and().logout().permitAll();
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    // logout is performed when sending a GET to "/logout"
+                    // after logout is successful, redirect to / page (home)
+                    .logoutSuccessUrl("/");
     }
     
     /**
